@@ -1,1 +1,21 @@
+<<<<<<< HEAD
 /target/
+=======
+# Maven
+target/
+*.ser
+*.ec
+
+# IntelliJ Idea
+.idea/
+out/
+*.ipr
+*.iws
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+>>>>>>> 773bf577f0597aa1b676502e9f3a16f1a175b174

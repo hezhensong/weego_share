@@ -3,8 +3,10 @@ F:\weego\weego_share\src\main\java\com\weego\main\dto\POIDetailActivitiesDto.jav
 F:\weego\weego_share\src\main\java\com\weego\main\dto\POIBaseDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\Pgcs.java
 F:\weego\weego_share\src\main\java\com\weego\main\service\ShoppingService.java
+F:\weego\weego_share\src\main\java\com\weego\main\controller\NewsController.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\Areas.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\BasePOILabel.java
+F:\weego\weego_share\src\main\java\com\weego\main\model\NewsContent.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\AreasEnInfo.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\ParagraphDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\OriginalDto.java
@@ -27,6 +29,8 @@ F:\weego\weego_share\src\main\java\com\weego\main\model\BasePOIEnInfo.java
 F:\weego\weego_share\src\main\java\com\weego\main\service\impl\ActivityServiceImpl.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\BasePOIOpenTime.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\PgcPersonDto.java
+F:\weego\weego_share\src\main\java\com\weego\main\service\impl\NewsServiceImpl.java
+F:\weego\weego_share\src\main\java\com\weego\main\model\News.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\PersonSimpleIntroduceDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\service\impl\AreaServiceImpl.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\RestaurantResTags.java
@@ -43,6 +47,7 @@ F:\weego\weego_share\src\main\java\com\weego\main\model\Shoppings.java
 F:\weego\weego_share\src\main\java\com\weego\main\service\PgcService.java
 F:\weego\weego_share\src\main\java\com\weego\main\service\RestaurantService.java
 F:\weego\weego_share\src\main\java\com\weego\main\service\AttractionService.java
+F:\weego\weego_share\src\main\java\com\weego\main\dto\ResponseDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\PgcCity.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\PersonDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\service\impl\PgcServiceImpl.java
@@ -55,13 +60,17 @@ F:\weego\weego_share\src\main\java\com\weego\main\model\BasePOIPeriods.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\PgcListDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\RestaurantDish.java
 F:\weego\weego_share\src\main\java\com\weego\main\dao\RestaurantDao.java
+F:\weego\weego_share\src\main\java\com\weego\main\dto\NewsContentDto.java
+F:\weego\weego_share\src\main\java\com\weego\main\dao\NewsDao.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\PeoplesCityName.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\BasePOICommentsTop.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\PgcPoiDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\POIDetailFacilitiesDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\BasePOIComments.java
+F:\weego\weego_share\src\main\java\com\weego\main\dto\NewsDto.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\LatestAttractions.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\RestaurantCategory.java
+F:\weego\weego_share\src\main\java\com\weego\main\service\NewsService.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\ShopTag.java
 F:\weego\weego_share\src\main\java\com\weego\main\model\BasePOIImageUrl.java
 F:\weego\weego_share\src\main\java\com\weego\main\dto\PgcListContentDto.java
