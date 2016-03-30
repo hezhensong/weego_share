@@ -32,7 +32,10 @@ public class Restaurants {
 	@JsonProperty("city_name")
 	private String cityName;
 
-	private List<BasePOIComments> comments;
+	@JsonProperty("city name")
+	private String wrongCityName;
+
+	private List<Object> comments;
 
 	@JsonProperty("comments_from")
 	private String commentsFrom;
@@ -55,7 +58,7 @@ public class Restaurants {
 	private Integer duration;
 
 	@JsonProperty("en_info")
-	private BasePOIEnInfo enInfo;
+	private Object enInfo;
 
 	private Boolean ev;
 
@@ -94,7 +97,7 @@ public class Restaurants {
 	private String openTabelUrl;
 
 	@JsonProperty("open_time")
-	private List<BasePOIOpenTime> openTime;
+	private Object openTime;
 
 	private List<BasePOIPeriods> periods;
 
@@ -104,11 +107,11 @@ public class Restaurants {
 	private String priceDesc;
 
 	@JsonProperty("price_level")
-	private Integer priceLevel;
+	private Object priceLevel;
 
 	private Integer ranking;
 
-	private Integer rating;
+	private Object rating;
 
 	@JsonProperty("rating_env")
 	private Integer ratingEnv;
@@ -118,6 +121,9 @@ public class Restaurants {
 
 	@JsonProperty("rating_service")
 	private Integer ratingService;
+
+	@JsonProperty("recommand_reason")
+	private String recommandReason;
 
 	@JsonProperty("recommand_duration")
 	private String recommandDuration;
@@ -134,7 +140,7 @@ public class Restaurants {
 	@JsonProperty("show_flag")
 	private Boolean showFlag;
 
-	private List<String> tags;
+	private Object tags;
 
 	@JsonProperty("tags_zh")
 	private List<String> tagsZh;
@@ -151,6 +157,33 @@ public class Restaurants {
 
 	@JsonProperty("comments_zh")
 	private List<String> commentsZh;
+
+	@JsonProperty("postal_code")
+	private String postalCode;
+
+	@JsonProperty("local_flag")
+	private Boolean localFlag;
+
+	@JsonProperty("michilin_flag")
+	private Boolean michiFlag;
+
+	@JsonProperty("michelin_flag")
+	private Boolean wrongMichiFlag;
+
+	@JsonProperty("area_id")
+	private String areaId;
+
+	@JsonProperty("area_name")
+	private String areaName;
+
+	@JsonProperty("yelp_img_url")
+	private String yelpImgUrl;
+
+	@JsonProperty("field14")
+	private String field;
+
+	@JsonProperty("place_id")
+	private String placeId;
 
 	public String getId() {
 		return id;
@@ -224,11 +257,11 @@ public class Restaurants {
 		this.cityName = cityName;
 	}
 
-	public List<BasePOIComments> getComments() {
+	public List<Object> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<BasePOIComments> comments) {
+	public void setComments(List<Object> comments) {
 		this.comments = comments;
 	}
 
@@ -288,12 +321,36 @@ public class Restaurants {
 		this.duration = duration;
 	}
 
-	public BasePOIEnInfo getEnInfo() {
+	public String getWrongCityName() {
+		return wrongCityName;
+	}
+
+	public void setWrongCityName(String wrongCityName) {
+		this.wrongCityName = wrongCityName;
+	}
+
+	public Object getEnInfo() {
 		return enInfo;
 	}
 
-	public void setEnInfo(BasePOIEnInfo enInfo) {
+	public void setEnInfo(Object enInfo) {
 		this.enInfo = enInfo;
+	}
+
+	public Boolean getMichiFlag() {
+		return michiFlag;
+	}
+
+	public void setMichiFlag(Boolean michiFlag) {
+		this.michiFlag = michiFlag;
+	}
+
+	public Boolean getWrongMichiFlag() {
+		return wrongMichiFlag;
+	}
+
+	public void setWrongMichiFlag(Boolean wrongMichiFlag) {
+		this.wrongMichiFlag = wrongMichiFlag;
 	}
 
 	public Boolean getEv() {
@@ -424,12 +481,36 @@ public class Restaurants {
 		this.openTabelUrl = openTabelUrl;
 	}
 
-	public List<BasePOIOpenTime> getOpenTime() {
+	public Object getOpenTime() {
 		return openTime;
 	}
 
-	public void setOpenTime(List<BasePOIOpenTime> openTime) {
+	public void setOpenTime(Object openTime) {
 		this.openTime = openTime;
+	}
+
+	public String getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(String areaId) {
+		this.areaId = areaId;
+	}
+
+	public String getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
+	}
+
+	public String getYelpImgUrl() {
+		return yelpImgUrl;
+	}
+
+	public void setYelpImgUrl(String yelpImgUrl) {
+		this.yelpImgUrl = yelpImgUrl;
 	}
 
 	public List<BasePOIPeriods> getPeriods() {
@@ -456,11 +537,11 @@ public class Restaurants {
 		this.priceDesc = priceDesc;
 	}
 
-	public Integer getPriceLevel() {
+	public Object getPriceLevel() {
 		return priceLevel;
 	}
 
-	public void setPriceLevel(Integer priceLevel) {
+	public void setPriceLevel(Object priceLevel) {
 		this.priceLevel = priceLevel;
 	}
 
@@ -472,11 +553,11 @@ public class Restaurants {
 		this.ranking = ranking;
 	}
 
-	public Integer getRating() {
+	public Object getRating() {
 		return rating;
 	}
 
-	public void setRating(Integer rating) {
+	public void setRating(Object rating) {
 		this.rating = rating;
 	}
 
@@ -552,11 +633,11 @@ public class Restaurants {
 		this.showFlag = showFlag;
 	}
 
-	public List<String> getTags() {
+	public Object getTags() {
 		return tags;
 	}
 
-	public void setTags(List<String> tags) {
+	public void setTags(Object tags) {
 		this.tags = tags;
 	}
 
@@ -614,6 +695,46 @@ public class Restaurants {
 
 	public void setCommentsZh(List<String> commentsZh) {
 		this.commentsZh = commentsZh;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public String getRecommandReason() {
+		return recommandReason;
+	}
+
+	public void setRecommandReason(String recommandReason) {
+		this.recommandReason = recommandReason;
+	}
+
+	public Boolean getLocalFlag() {
+		return localFlag;
+	}
+
+	public void setLocalFlag(Boolean localFlag) {
+		this.localFlag = localFlag;
+	}
+
+	public String getField() {
+		return field;
+	}
+
+	public void setField(String field) {
+		this.field = field;
+	}
+
+	public String getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(String placeId) {
+		this.placeId = placeId;
 	}
 
 }

@@ -2,6 +2,7 @@ package com.weego.main.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,17 +19,16 @@ import com.weego.main.dto.POIDetailTagDto;
 import com.weego.main.model.AttractionSpot;
 import com.weego.main.model.BasePOIComments;
 import com.weego.main.model.BasePOILabel;
-import com.weego.main.model.BasePOIOpenTime;
 import com.weego.main.model.LatestAttractions;
 import com.weego.main.service.AttractionService;
 
 @Service("attractionService")
 public class AttractionServiceImpl implements AttractionService {
 
-	private static Logger logger = LogManager.getLogger(AttractionServiceImpl.class);
+	private static Logger logger = LogManager
+			.getLogger(AttractionServiceImpl.class);
 	private String imageUrl = "http://weegotest.b0.upaiyun.com/attractions/iosimgs/";
-	
-	
+
 	@Autowired
 	AttractionDao attractionDao;
 
@@ -38,38 +38,61 @@ public class AttractionServiceImpl implements AttractionService {
 	@Override
 	public POIDetailSumDto getAttractionById(String id, String coordination) {
 		POIDetailSumDto poiDetailSumDto = new POIDetailSumDto();
-		
+
 		try {
 			LatestAttractions attraction = attractionDao.getAttractionById(id);
 			if (attraction != null) {
 				poiDetailSumDto.setId(attraction.getId());
-				poiDetailSumDto.setType(Integer.parseInt(attraction.getType()));
+				if (attraction.getType() == null) {
+					poiDetailSumDto.setType(0);
+				} else {
+					poiDetailSumDto.setType(Integer.parseInt(attraction
+							.getType()));
+				}
 				poiDetailSumDto.setName(attraction.getAttractions());
 				poiDetailSumDto.setNameEn(attraction.getAttractionsEn());
 				poiDetailSumDto.setAddress(attraction.getAddress());
 				poiDetailSumDto.setTel(attraction.getTelno());
 				poiDetailSumDto.setWebsite(attraction.getWebsite());
-				poiDetailSumDto.setBriefIntroduction(attraction.getShortIntroduce());
+				poiDetailSumDto.setBriefIntroduction(attraction
+						.getShortIntroduce());
 				poiDetailSumDto.setIntroduction(attraction.getIntroduce());
 				poiDetailSumDto.setCityName(attraction.getCityName());
 				poiDetailSumDto.setCityId(attraction.getCityId());
 
-				
 				poiDetailSumDto.setImage(attraction.getImage());
 				poiDetailSumDto.setCoverImage(imageUrl + attraction.getCoverImageName());
-				
-				List<BasePOIOpenTime> openTimes = attraction.getOpenTime();
+
+				Object openTimes = attraction.getOpenTime();
 				List<String> openTimeDesc = new ArrayList<String>();
-				if(openTimes != null && openTimes.size() > 0) {
-					for(BasePOIOpenTime openTime : openTimes) {
-						openTimeDesc.add(openTime.getDesc());
+				if (openTimes instanceof String) {
+					openTimeDesc.add((String) openTimes);
+				} else if (openTimes instanceof List) {
+					List<Map<String, String>> tempOpenTimes = (List<Map<String, String>>) openTimes;
+					if (tempOpenTimes != null && tempOpenTimes.size() > 0) {
+						for (Map<String, String> tempOpenTime : tempOpenTimes) {
+							openTimeDesc.add(tempOpenTime.get("desc"));
+						}
+					} else {
+						openTimeDesc = null;
 					}
-					poiDetailSumDto.setOpenTime(openTimeDesc);
 				}
+
+				if (openTimes != null) {
+					poiDetailSumDto.setOpenTime(openTimeDesc);
+				} else {
+					poiDetailSumDto.setOpenTime(null);
+				}
+
 				poiDetailSumDto.setOpenTimeDesc("");
-				
 				poiDetailSumDto.setPriceDesc(attraction.getPrice());
-				poiDetailSumDto.setRating(Double.parseDouble(String.valueOf(attraction.getYelpRating())));
+
+				if (attraction.getYelpRating() == null) {
+					poiDetailSumDto.setRating(5.0);
+				} else {
+					poiDetailSumDto.setRating(Double.valueOf(String.valueOf(attraction.getYelpRating())));
+				}
+
 				List<POIDetailSpecialDto> poiDetailSpecialDtos = new ArrayList<POIDetailSpecialDto>();
 				List<AttractionSpot> attractionSpots = attraction.getSpot();
 				if (attractionSpots != null && attractionSpots.size() > 0) {
@@ -82,9 +105,16 @@ public class AttractionServiceImpl implements AttractionService {
 						poiDetailSpecialDto.setTag("");
 						poiDetailSpecialDto.setCoverImage(imageUrl + attractionSpot.getCoverImage());
 						poiDetailSpecialDtos.add(poiDetailSpecialDto);
-					}
+					} 
+				} else {
+					poiDetailSpecialDtos = null;
 				}
-				poiDetailSumDto.setSpecial(poiDetailSpecialDtos);
+				
+				if (attractionSpots != null) {
+					poiDetailSumDto.setSpecial(poiDetailSpecialDtos);
+				} else {
+					poiDetailSumDto.setSpecial(null);
+				}
 
 				List<POIDetailActivitiesDto> poiDetailActivitiesDtos = new ArrayList<POIDetailActivitiesDto>();
 				poiDetailSumDto.setActivities(poiDetailActivitiesDtos);
@@ -92,12 +122,18 @@ public class AttractionServiceImpl implements AttractionService {
 				List<POIDetailTagDto> poiDetailTagDtos = new ArrayList<POIDetailTagDto>();
 				List<BasePOILabel> basePOITags = attraction.getSubLabelNew();
 				if (basePOITags != null && basePOITags.size() > 0) {
-					for (BasePOILabel basePOITag : basePOITags) {
+					int tagLimit = basePOITags.size();
+					if (tagLimit > 3) {
+						tagLimit = 3;
+					}
+					for (int i = 0; i < tagLimit; i++) {
 						POIDetailTagDto poiDetailTagDto = new POIDetailTagDto();
-						poiDetailTagDto.setId(basePOITag.getId());
-						poiDetailTagDto.setName(basePOITag.getLabel());
+						poiDetailTagDto.setId(basePOITags.get(i).getId());
+						poiDetailTagDto.setName(basePOITags.get(i).getLabel());
 						poiDetailTagDtos.add(poiDetailTagDto);
 					}
+				} else {
+					poiDetailTagDtos = null;
 				}
 				poiDetailSumDto.setTag(poiDetailTagDtos);
 
@@ -111,18 +147,21 @@ public class AttractionServiceImpl implements AttractionService {
 					for (BasePOIComments basePOIComment : basePOIComments) {
 						POIDetailCommentsDto poiDetailCommentsDto = new POIDetailCommentsDto();
 						poiDetailCommentsDto.setNickname(basePOIComment.getNickname());
-						if(basePOIComment.getDate() != null) {
-							poiDetailCommentsDto.setDate(basePOIComment.getDate());
-						}
+						poiDetailCommentsDto.setDate(null);
 						poiDetailCommentsDto.setText(basePOIComment.getText());
 						poiDetailCommentsDto.setRating(basePOIComment.getRating());
 						poiDetailCommentsDto.setTitle(basePOIComment.getTitle());
-						poiDetailCommentsDto.setLanguage(basePOIComment
-								.getLanguage());
+						poiDetailCommentsDto.setLanguage(basePOIComment.getLanguage());
 						poiDetailCommentsDtos.add(poiDetailCommentsDto);
 					}
+				} else {
+					poiDetailCommentsDtos = null;
 				}
-				poiDetailSumDto.setComments(poiDetailCommentsDtos);
+				if(basePOIComments != null) {
+					poiDetailSumDto.setComments(poiDetailCommentsDtos);
+				} else {
+					poiDetailSumDto.setComments(null);
+				}
 				poiDetailSumDto.setOpenTableUrl("");
 				poiDetailSumDto.setOpenDay(0);
 				poiDetailSumDto.setFacilities(null);
@@ -134,5 +173,4 @@ public class AttractionServiceImpl implements AttractionService {
 		return poiDetailSumDto;
 	}
 
-	
 }

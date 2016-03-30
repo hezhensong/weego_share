@@ -16,20 +16,26 @@ import com.weego.main.dao.RestaurantDao;
 import com.weego.main.dao.ShoppingDao;
 import com.weego.main.dto.ParagraphDto;
 import com.weego.main.dto.PgcContentDto;
-import com.weego.main.dto.PgcImageDto;
 import com.weego.main.dto.PgcPoiDto;
-import com.weego.main.model.Areas;
 import com.weego.main.model.BasePOILabel;
 import com.weego.main.model.LatestAttractions;
 import com.weego.main.model.Peoples;
 import com.weego.main.model.PgcPoi;
 import com.weego.main.model.Pgcs;
 import com.weego.main.model.Restaurants;
+import com.weego.main.model.ShopTag;
+import com.weego.main.model.Shoppings;
 import com.weego.main.service.PgcService;
 
 @Service("pgcService")
 public class PgcServiceImpl implements PgcService {
-
+	
+	private String coverImageUrl = "http://weegotest.b0.upaiyun.com/brands/iosimgs/";
+	private String firstImageUrl = "http://weegotest.b0.upaiyun.com/attractions/origin/";
+	private String secondImageUrl = "http://weegotest.b0.upaiyun.com/restaurant/origin/";
+	private String thirdImageUrl = "http://weegotest.b0.upaiyun.com/shopping/origin/";
+	
+	
 	@Autowired
 	private PgcDao pgcDao;
 
@@ -49,73 +55,74 @@ public class PgcServiceImpl implements PgcService {
 	private AreaDao areaDao;
 
 	@Override
-	public ModelAndView getSpecifiedPgc(String pgcId) {
+    public ModelAndView getSpecifiedPgc(String pgcId) {
 
-		Pgcs pgc = pgcDao.getSpecifiedPgc(pgcId);
-		if (pgc == null) {
-			return null;
-		} else {
+        Pgcs pgc = pgcDao.getSpecifiedPgc(pgcId);
+        if (pgc == null) {
+            return null;
+        } else {
+            ModelAndView mv = new ModelAndView("PGC");
+            mv.addObject("cover_img", coverImageUrl + pgc.getCoverImage());
+            mv.addObject("title", pgc.getTitle());
+            
+            if (Strings.isNullOrEmpty(pgc.getPgcPeople().getId())) {
+                mv.addObject("person", null);
+            } else {
+                Peoples person = peopleDao.getPeopleById(pgc.getPgcPeople().getId().trim());
+                if(person!=null){
+                    mv.addObject("person", person);
+                }else{
+                    mv.addObject("person", null);
+                }
+            }
+            
+            mv.addObject("original", null);
 
-			ModelAndView mv = new ModelAndView("PGC");
-			mv.addObject("author", pgc.getPgcPeople().getName());
-			mv.addObject("poi_bg", pgc.getCoverImage());
-			mv.addObject("title", pgc.getTitle());
+            List<PgcPoi> pgcPoiList = pgc.getPgcPoi();
+            List<PgcContentDto> pgcPoiDtoList = new ArrayList<PgcContentDto>();
+            if (pgcPoiList != null && pgcPoiList.size() > 0) {
+                for (PgcPoi pgcPoi : pgcPoiList) {
+                    PgcContentDto pgcContentDto = new PgcContentDto();
+                    ParagraphDto paragraphDto = new ParagraphDto();
+                    paragraphDto.setTitle(Strings.nullToEmpty(""));
+                    paragraphDto.setDesc(Strings.nullToEmpty(pgcPoi.getPoiDesc()));
+                    pgcContentDto.setParagraph(paragraphDto);
 
-			if (Strings.isNullOrEmpty(pgc.getPgcPeople().getName())) {
-				mv.addObject("person", null);
-			} else {
-				Peoples person = peopleDao.getPeopleById(pgc.getPgcPeople().getId());
-				if (person != null) {
-					mv.addObject("person", person);
-				} else {
-					mv.addObject("person", null);
-				}
-			}
+                    PgcPoiDto pgcPoiDto = new PgcPoiDto();
+                    pgcPoiDto.setId(Strings.nullToEmpty(pgcPoi.getId()));
+                   
+                    if(pgcPoi.getType().equals("0")) {
+                    	pgcPoiDto.setImage(firstImageUrl + Strings.nullToEmpty(pgcPoi.getPoiImage()));
+                    } else if(pgcPoi.getType().equals("1")) {
+                    	pgcPoiDto.setImage(secondImageUrl + Strings.nullToEmpty(pgcPoi.getPoiImage()));
+                    } else if(pgcPoi.getType().equals("2")) {
+                    	pgcPoiDto.setImage(thirdImageUrl + Strings.nullToEmpty(pgcPoi.getPoiImage()));
+                    } else {
+                    	pgcPoiDto.setImage(null);
+                    }
+                    
+                    pgcPoiDto.setType(Strings.nullToEmpty(pgcPoi.getType()));
+                    pgcPoiDto.setTitle(Strings.nullToEmpty(pgcPoi.getName()));
+                    pgcPoiDto.setTag(getPoiTagbyType(pgcPoi.getId(), pgcPoi.getType()));
+                    pgcContentDto.setPoi(pgcPoiDto);
 
-			mv.addObject("original", null);
-
-			List<PgcPoi> pgcPoiList = pgc.getPgcPoi();
-			List<PgcContentDto> pgcPoiDtoList = new ArrayList<PgcContentDto>();
-			if (pgcPoiList != null && pgcPoiList.size() > 0) {
-				for (PgcPoi pgcPoi : pgcPoiList) {
-					PgcContentDto pgcContentDto = new PgcContentDto();
-					ParagraphDto paragraphDto = new ParagraphDto();
-					paragraphDto.setTitle(Strings.nullToEmpty(""));
-					paragraphDto.setDesc(Strings.nullToEmpty(""));
-					pgcContentDto.setParagraph(paragraphDto);
-
-					PgcPoiDto pgcPoiDto = new PgcPoiDto();
-					pgcPoiDto.setId(Strings.nullToEmpty(pgcPoi.getId()));
-					pgcPoiDto
-							.setImage(Strings.nullToEmpty(pgcPoi.getPoiImage()));
-					pgcPoiDto.setType(Strings.nullToEmpty(pgcPoi.getType()));
-					pgcPoiDto.setTitle(Strings.nullToEmpty(pgcPoi.getName()));
-					String tag = getPoiTagbyType(pgcPoi.getId(), pgcPoi.getType());
-					/*if (tag == null || tag.endsWith("")) {
-						pgcPoiDto.setTag(tag);
-					}*/
-					
-					pgcPoiDto.setTag(tag);
-					pgcContentDto.setPoi(pgcPoiDto);
-
-					PgcImageDto pgcImageDto = new PgcImageDto();
-					
-					/*pgcImageDto.setUrl(Strings.nullToEmpty(pgcPoi.getImageUrl())); 
-					pgcImageDto.setSource(Strings.nullToEmpty(pgcPoi.getImageSource()));*/
-					 
-					pgcContentDto.setImage(pgcImageDto);
-
-					pgcPoiDtoList.add(pgcContentDto);
-				}
-			}
-			mv.addObject("poilist", pgcPoiDtoList);
-			mv.addObject("breif", pgc.getIntroducation());
-
-			return mv;
-		}
-
-	}
-
+                    pgcContentDto.setImage(null);
+                    pgcPoiDtoList.add(pgcContentDto);
+                }
+            } else {
+            	pgcPoiDtoList = null;
+            }
+            if(pgcPoiList != null) {
+            	mv.addObject("poilist", pgcPoiDtoList);
+            } else {
+            	mv.addObject("poilist", null);
+            }
+            
+            mv.addObject("breif", pgc.getIntroducation());
+            return mv;
+        }
+    }
+	
 	private String getPoiTagbyType(String id, String type) {
 		if (Strings.isNullOrEmpty(type)) {
 			return "";
@@ -136,15 +143,14 @@ public class PgcServiceImpl implements PgcService {
 				return basePOITags.get(0);
 			}
 		} else if (intType == 2) {
-			return "";
-		} else if (intType == 3) {
-			Areas area = areaDao.getAreaById(id);
-			List<String> basePOITags = area.getTags();
+			Shoppings shopping = shoppingDao.getShoppingById(id);
+			List<ShopTag> basePOITags =	shopping.getShoptags();
 			if (basePOITags != null && basePOITags.size() > 0) {
-				return basePOITags.get(0);
+				return basePOITags.get(0).getTitle();
 			}
-		}
+		} 
 
 		return "";
 	}
+	
 }

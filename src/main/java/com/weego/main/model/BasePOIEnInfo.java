@@ -9,21 +9,21 @@ public class BasePOIEnInfo {
 	private String opentime;
 	private String price;
 
-	@JsonProperty("recommandReason")
-	private String recommand_reason;
+	@JsonProperty("recommand_reason")
+	private String recommandReason;
 
 	@JsonProperty("short_introduce")
 	private String shortIntroduce;
-	
+
 	@JsonProperty("brief_introduce")
 	private String briefIntroduce;
-	
+
 	@JsonProperty("price_desc")
 	private String priceDesc;
-	
+
 	@JsonProperty("open_time")
 	private List<String> openTimeArray;
-	
+
 	private List<String> comments;
 
 	private String tips;
@@ -55,12 +55,12 @@ public class BasePOIEnInfo {
 		this.price = price;
 	}
 
-	public String getRecommand_reason() {
-		return recommand_reason;
+	public String getRecommandReason() {
+		return recommandReason;
 	}
 
-	public void setRecommand_reason(String recommand_reason) {
-		this.recommand_reason = recommand_reason;
+	public void setRecommandReason(String recommandReason) {
+		this.recommandReason = recommandReason;
 	}
 
 	public String getShortIntroduce() {

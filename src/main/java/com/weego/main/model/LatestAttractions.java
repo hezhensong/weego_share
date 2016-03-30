@@ -41,6 +41,9 @@ public class LatestAttractions {
 	@JsonProperty("cityname")
 	private String cityName;
 
+	@JsonProperty("city_name")
+	private String wrongCityName;
+
 	@JsonProperty("comment_count")
 	private Integer commentCount;
 
@@ -56,6 +59,9 @@ public class LatestAttractions {
 	private String commentsUrl;
 
 	private String coverImageName;
+
+	@JsonProperty("cover_image")
+	private String wrongCoverImage;
 
 	private String createFlag;
 
@@ -101,13 +107,13 @@ public class LatestAttractions {
 
 	private String masterLabel;
 
-	private BasePOILabel masterLabelNew;
+	private Object masterLabelNew;
 
 	@JsonProperty("open_time")
-	private List<BasePOIOpenTime> openTime;
+	private Object openTime;
 
 	@JsonProperty("opentime")
-	private List<BasePOIOpenTime> openWrongTime;
+	private Object openWrongTime;
 
 	private Boolean pm;
 
@@ -124,7 +130,7 @@ public class LatestAttractions {
 	private String recommandFlag;
 
 	@JsonProperty("recommand_reason")
-	private String recommandReason;
+	private Object recommandReason;
 
 	private Integer reviews;
 
@@ -136,6 +142,8 @@ public class LatestAttractions {
 
 	private String telno;
 
+	private String tel;
+
 	private String tips;
 
 	@JsonProperty("traffic_info")
@@ -146,7 +154,7 @@ public class LatestAttractions {
 	private String website;
 
 	@JsonProperty("yelp_rating")
-	private Integer yelpRating;
+	private Object yelpRating;
 
 	@JsonProperty("yelp_review_count")
 	private Integer yelpReviewCount;
@@ -159,6 +167,35 @@ public class LatestAttractions {
 	private List<String> subLabel;
 
 	private List<BasePOILabel> subLabelNew;
+
+	private Object periods;
+
+	private Object score;
+
+	@JsonProperty("price_level")
+	private Object priceLevel;
+
+	@JsonProperty("create_flag")
+	private Object cerateFlag;
+
+	private Object userCreateLabels;
+
+	@JsonProperty("user_id")
+	private String userId;
+
+	private Object unset;
+
+	@JsonProperty("area_name")
+	private Object areaName;
+
+	@JsonProperty("area_introduce")
+	private Object areaIntroduce;
+
+	@JsonProperty("brief_introduce")
+	private String briefIntroduce;
+
+	@JsonProperty("place_id")
+	private String placeId;
 
 	public String getId() {
 		return id;
@@ -464,27 +501,27 @@ public class LatestAttractions {
 		this.masterLabel = masterLabel;
 	}
 
-	public BasePOILabel getMasterLabelNew() {
+	public Object getMasterLabelNew() {
 		return masterLabelNew;
 	}
 
-	public void setMasterLabelNew(BasePOILabel masterLabelNew) {
+	public void setMasterLabelNew(Object masterLabelNew) {
 		this.masterLabelNew = masterLabelNew;
 	}
 
-	public List<BasePOIOpenTime> getOpenTime() {
+	public Object getOpenTime() {
 		return openTime;
 	}
 
-	public void setOpenTime(List<BasePOIOpenTime> openTime) {
+	public void setOpenTime(Object openTime) {
 		this.openTime = openTime;
 	}
 
-	public List<BasePOIOpenTime> getOpenWrongTime() {
+	public Object getOpenWrongTime() {
 		return openWrongTime;
 	}
 
-	public void setOpenWrongTime(List<BasePOIOpenTime> openWrongTime) {
+	public void setOpenWrongTime(Object openWrongTime) {
 		this.openWrongTime = openWrongTime;
 	}
 
@@ -536,11 +573,11 @@ public class LatestAttractions {
 		this.recommandFlag = recommandFlag;
 	}
 
-	public String getRecommandReason() {
+	public Object getRecommandReason() {
 		return recommandReason;
 	}
 
-	public void setRecommandReason(String recommandReason) {
+	public void setRecommandReason(Object recommandReason) {
 		this.recommandReason = recommandReason;
 	}
 
@@ -608,11 +645,11 @@ public class LatestAttractions {
 		this.website = website;
 	}
 
-	public Integer getYelpRating() {
+	public Object getYelpRating() {
 		return yelpRating;
 	}
 
-	public void setYelpRating(Integer yelpRating) {
+	public void setYelpRating(Object yelpRating) {
 		this.yelpRating = yelpRating;
 	}
 
@@ -654,6 +691,118 @@ public class LatestAttractions {
 
 	public void setSubLabelNew(List<BasePOILabel> subLabelNew) {
 		this.subLabelNew = subLabelNew;
+	}
+
+	public String getWrongCoverImage() {
+		return wrongCoverImage;
+	}
+
+	public void setWrongCoverImage(String wrongCoverImage) {
+		this.wrongCoverImage = wrongCoverImage;
+	}
+
+	public Object getPeriods() {
+		return periods;
+	}
+
+	public void setPeriods(Object periods) {
+		this.periods = periods;
+	}
+
+	public Object getScore() {
+		return score;
+	}
+
+	public void setScore(Object score) {
+		this.score = score;
+	}
+
+	public Object getCerateFlag() {
+		return cerateFlag;
+	}
+
+	public void setCerateFlag(Object cerateFlag) {
+		this.cerateFlag = cerateFlag;
+	}
+
+	public Object getPriceLevel() {
+		return priceLevel;
+	}
+
+	public void setPriceLevel(Object priceLevel) {
+		this.priceLevel = priceLevel;
+	}
+
+	public Object getUserCreateLabels() {
+		return userCreateLabels;
+	}
+
+	public void setUserCreateLabels(Object userCreateLabels) {
+		this.userCreateLabels = userCreateLabels;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public Object getUnset() {
+		return unset;
+	}
+
+	public void setUnset(Object unset) {
+		this.unset = unset;
+	}
+
+	public Object getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(Object areaName) {
+		this.areaName = areaName;
+	}
+
+	public Object getAreaIntroduce() {
+		return areaIntroduce;
+	}
+
+	public void setAreaIntroduce(Object areaIntroduce) {
+		this.areaIntroduce = areaIntroduce;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getBriefIntroduce() {
+		return briefIntroduce;
+	}
+
+	public void setBriefIntroduce(String briefIntroduce) {
+		this.briefIntroduce = briefIntroduce;
+	}
+
+	public String getWrongCityName() {
+		return wrongCityName;
+	}
+
+	public void setWrongCityName(String wrongCityName) {
+		this.wrongCityName = wrongCityName;
+	}
+
+	public String getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(String placeId) {
+		this.placeId = placeId;
 	}
 
 }

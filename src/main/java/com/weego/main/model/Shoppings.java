@@ -71,7 +71,7 @@ public class Shoppings {
 	private String nameEn;
 
 	@JsonProperty("open_time")
-	private List<BasePOIOpenTime> openTime;
+	private Object openTime;
 
 	private Boolean pm;
 
@@ -105,7 +105,7 @@ public class Shoppings {
 	private Integer score;
 
 	@JsonProperty("show_flag")
-	private Boolean showFlag;
+	private Object showFlag;
 
 	private String tel;
 
@@ -119,6 +119,51 @@ public class Shoppings {
 	private String tips;
 
 	private List<ShoppingBrand> brand;
+
+	@JsonProperty("activities")
+	private Object activities;
+
+	@JsonProperty("area_id")
+	private String areaId;
+
+	@JsonProperty("area_name")
+	private String areaName;
+
+	@JsonProperty("brief_introduce")
+	private String briefIntroduce;
+
+	@JsonProperty("comments_from")
+	private String commentsFrom;
+
+	@JsonProperty("comments_top")
+	private Object commentsTop;
+
+	@JsonProperty("comments_url")
+	private String commentsUrl;
+
+	@JsonProperty("googleId")
+	private String googleId;
+
+	@JsonProperty("periods")
+	private Object periods;
+
+	@JsonProperty("website")
+	private String website;
+
+	@JsonProperty("recommand_duration")
+	private Object recommandDuration;
+
+	@JsonProperty("shoptags")
+	private List<ShopTag> shoptags;
+
+	@JsonProperty("area_introduce")
+	private String areaIntroduce;
+
+	@JsonProperty("place_id")
+	private Object placeId;
+
+	@JsonProperty("in_big_id")
+	private Object inBigId;
 
 	public String getId() {
 		return id;
@@ -320,14 +365,6 @@ public class Shoppings {
 		this.nameEn = nameEn;
 	}
 
-	public List<BasePOIOpenTime> getOpenTime() {
-		return openTime;
-	}
-
-	public void setOpenTime(List<BasePOIOpenTime> openTime) {
-		this.openTime = openTime;
-	}
-
 	public Boolean getPm() {
 		return pm;
 	}
@@ -424,14 +461,6 @@ public class Shoppings {
 		this.score = score;
 	}
 
-	public Boolean getShowFlag() {
-		return showFlag;
-	}
-
-	public void setShowFlag(Boolean showFlag) {
-		this.showFlag = showFlag;
-	}
-
 	public String getTel() {
 		return tel;
 	}
@@ -478,6 +507,142 @@ public class Shoppings {
 
 	public void setBrand(List<ShoppingBrand> brand) {
 		this.brand = brand;
+	}
+
+	public Object getOpenTime() {
+		return openTime;
+	}
+
+	public void setOpenTime(Object openTime) {
+		this.openTime = openTime;
+	}
+
+	public Object getShowFlag() {
+		return showFlag;
+	}
+
+	public void setShowFlag(Object showFlag) {
+		this.showFlag = showFlag;
+	}
+
+	public Object getActivities() {
+		return activities;
+	}
+
+	public void setActivities(Object activities) {
+		this.activities = activities;
+	}
+
+	public String getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(String areaId) {
+		this.areaId = areaId;
+	}
+
+	public String getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
+	}
+
+	public String getBriefIntroduce() {
+		return briefIntroduce;
+	}
+
+	public void setBriefIntroduce(String briefIntroduce) {
+		this.briefIntroduce = briefIntroduce;
+	}
+
+	public String getCommentsFrom() {
+		return commentsFrom;
+	}
+
+	public void setCommentsFrom(String commentsFrom) {
+		this.commentsFrom = commentsFrom;
+	}
+
+	public Object getCommentsTop() {
+		return commentsTop;
+	}
+
+	public void setCommentsTop(Object commentsTop) {
+		this.commentsTop = commentsTop;
+	}
+
+	public String getCommentsUrl() {
+		return commentsUrl;
+	}
+
+	public void setCommentsUrl(String commentsUrl) {
+		this.commentsUrl = commentsUrl;
+	}
+
+	public String getGoogleId() {
+		return googleId;
+	}
+
+	public void setGoogleId(String googleId) {
+		this.googleId = googleId;
+	}
+
+	public Object getPeriods() {
+		return periods;
+	}
+
+	public void setPeriods(Object periods) {
+		this.periods = periods;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public Object getRecommandDuration() {
+		return recommandDuration;
+	}
+
+	public void setRecommandDuration(Object recommandDuration) {
+		this.recommandDuration = recommandDuration;
+	}
+
+	public List<ShopTag> getShoptags() {
+		return shoptags;
+	}
+
+	public void setShoptags(List<ShopTag> shoptags) {
+		this.shoptags = shoptags;
+	}
+
+	public String getAreaIntroduce() {
+		return areaIntroduce;
+	}
+
+	public void setAreaIntroduce(String areaIntroduce) {
+		this.areaIntroduce = areaIntroduce;
+	}
+
+	public Object getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(Object placeId) {
+		this.placeId = placeId;
+	}
+
+	public Object getInBigId() {
+		return inBigId;
+	}
+
+	public void setInBigId(Object inBigId) {
+		this.inBigId = inBigId;
 	}
 
 }

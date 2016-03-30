@@ -7,6 +7,9 @@ import org.mongojack.Id;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Peoples {
+	
+	private String imageUrl = "http://weegotest.b0.upaiyun.com/brands/iosimgs/";
+	
 	@Id
 	private String id;
 
@@ -57,7 +60,7 @@ public class Peoples {
 	}
 
 	public String getHeadImage() {
-		return headImage;
+		return imageUrl + headImage;
 	}
 
 	public void setHeadImage(String headImage) {

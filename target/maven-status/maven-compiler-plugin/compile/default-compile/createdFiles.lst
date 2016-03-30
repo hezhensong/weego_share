@@ -30,6 +30,7 @@ com\weego\main\model\BasePOIEnInfo.class
 com\weego\main\model\PgcPoi.class
 com\weego\main\model\PeoplesSimpleIntroduce.class
 com\weego\main\model\Shoppings.class
+com\weego\main\model\ShopTag.class
 com\weego\main\service\impl\RestaurantServiceImpl.class
 com\weego\main\dto\POISpecialDto.class
 com\weego\main\dto\POIDetailSumDto.class

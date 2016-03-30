@@ -3,12 +3,10 @@ var _author = $("#author").html();
 var _text_title = $("#text_title").html();
 var _text = $("#text").html();
 var _poi_title = $("#poi_title").html();
-var _poi_tag = $("#poi_tag").html();
+var _type_text = $("#type_text").html();
 var _pic = $("#pic").attr("src");
 var _pic_resource = $("#pic_resource").html();
-var _public = $(".public").html();
 var _icon = $(".icon").attr("alt");
-alert(_icon);
 
 
 if(_icon =="0"){
@@ -45,7 +43,7 @@ if(_poi_title == ""){
 	$("#poi").hide();
 }
 
-if(_poi_tag == ""){
+if(_type_text == ""){
 	$("#poi_tag").hide();
 }
 
@@ -57,6 +55,3 @@ if(_pic_resource == ""){
 	$(".resource").hide();
 }
 
-if(_public == ""){
-	$("footer").hide();
-}

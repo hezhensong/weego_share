@@ -1,23 +1,20 @@
 package com.weego.main.model;
 
-import org.bson.types.ObjectId;
-import org.mongojack.Id;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ActivitiesCity {
 
-	@Id
-	private ObjectId id;
+	@JsonProperty("_id")
+	private String id;
 
 	@JsonProperty("cityname")
 	private String cityName;
 
-	public ObjectId getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(ObjectId id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

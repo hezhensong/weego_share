@@ -14,7 +14,8 @@ import com.weego.main.service.ActivityService;
 public class ActivityServiceImpl implements ActivityService {
 
 	private Logger logger = LogManager.getLogger(ActivityServiceImpl.class);
-
+	private String imageUrl = "http://weegotest.b0.upaiyun.com/activities/iosimgs/";
+	
 	@Autowired
 	private ActivityDao cityActivityDao;
 
@@ -30,7 +31,7 @@ public class ActivityServiceImpl implements ActivityService {
 				mv.addObject("time", activity.getActTime());
 				mv.addObject("tag", activity.getType());
 				mv.addObject("ip", activity.getDetailAddress());
-				mv.addObject("bg", activity.getCoverImage());
+				mv.addObject("bg", imageUrl + activity.getCoverImage());
 				mv.addObject("web", activity.getActUrl());
 				mv.addObject("ticket", activity.getOrderUrl());
 				mv.addObject("details", activity.getDesc());

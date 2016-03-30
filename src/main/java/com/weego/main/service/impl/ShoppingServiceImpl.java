@@ -2,6 +2,7 @@ package com.weego.main.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,8 +15,9 @@ import com.weego.main.dto.POIDetailActivitiesDto;
 import com.weego.main.dto.POIDetailCommentsDto;
 import com.weego.main.dto.POIDetailSpecialDto;
 import com.weego.main.dto.POIDetailSumDto;
+import com.weego.main.dto.POIDetailTagDto;
 import com.weego.main.model.BasePOIComments;
-import com.weego.main.model.BasePOIOpenTime;
+import com.weego.main.model.ShopTag;
 import com.weego.main.model.ShoppingBrand;
 import com.weego.main.model.Shoppings;
 import com.weego.main.service.ShoppingService;
@@ -40,7 +42,12 @@ public class ShoppingServiceImpl implements ShoppingService {
 			Shoppings shopping = shoppingDao.getShoppingById(id);
 			if (shopping != null) {
 				poiDetailSumDto.setId(shopping.getId());
-				poiDetailSumDto.setType(Integer.parseInt(shopping.getType()));
+				if(shopping.getType() == null) {
+					poiDetailSumDto.setType(2);
+				} else {
+					poiDetailSumDto.setType(Integer.parseInt(shopping.getType()));
+				}
+				
 				poiDetailSumDto.setName(shopping.getName());
 				poiDetailSumDto.setNameEn(shopping.getNameEn());
 				poiDetailSumDto.setAddress(shopping.getAddress());
@@ -54,19 +61,34 @@ public class ShoppingServiceImpl implements ShoppingService {
 				poiDetailSumDto.setImage(shopping.getImage());
 				poiDetailSumDto.setCoverImage(imageUrl + shopping.getCoverImage());
 				
-				List<BasePOIOpenTime> openTimes = shopping.getOpenTime();
+				Object openTimes = shopping.getOpenTime();
 				List<String> openTimeDesc = new ArrayList<String>();
-				if(openTimes != null && openTimes.size() > 0) {
-					for(BasePOIOpenTime openTime : openTimes) {
-						openTimeDesc.add(openTime.getDesc());
+				if (openTimes instanceof String) {
+					openTimeDesc.add((String) openTimes);
+				} else if (openTimes instanceof List) {
+					List<Map<String, String>> tempOpenTimes = (List<Map<String, String>>) openTimes;
+					if (tempOpenTimes != null && tempOpenTimes.size() > 0) {
+						for (Map<String, String> tempOpenTime : tempOpenTimes) {
+							openTimeDesc.add(tempOpenTime.get("desc"));
+						}
+					} else {
+						openTimeDesc = null;
 					}
+				}
+				if (openTimes != null) {
 					poiDetailSumDto.setOpenTime(openTimeDesc);
+				} else {
+					poiDetailSumDto.setOpenTime(null);
+				}
+
+				poiDetailSumDto.setPriceDesc(shopping.getPriceDesc());
+				if(shopping.getRating() == null) {
+					poiDetailSumDto.setRating(5.0);
+				} else {
+					poiDetailSumDto.setRating(Double.parseDouble(String.valueOf(shopping.getRating())));
 				}
 				
-				poiDetailSumDto.setPriceDesc(shopping.getPriceDesc());
-				poiDetailSumDto.setRating(Double.parseDouble(String.valueOf(shopping.getRating())));
-
-				List<POIDetailSpecialDto> poiDetailSpecialDtos = new ArrayList<POIDetailSpecialDto>();
+				/*List<POIDetailSpecialDto> poiDetailSpecialDtos = new ArrayList<POIDetailSpecialDto>();
 				List<ShoppingBrand> shoppingBrands = shopping.getBrand();
 				if (shoppingBrands != null && shoppingBrands.size() > 0) {
 					for (ShoppingBrand shoppingBrand : shoppingBrands) {
@@ -79,49 +101,69 @@ public class ShoppingServiceImpl implements ShoppingService {
 						poiDetailSpecialDto.setCoverImage(imageUrl + shoppingBrand.getCoverImage());
 						poiDetailSpecialDtos.add(poiDetailSpecialDto);
 					}
+				} else {
+					poiDetailSpecialDtos = null;
 				}
-				poiDetailSumDto.setSpecial(poiDetailSpecialDtos);
-
+				
+				if(shoppingBrands != null) {
+					poiDetailSumDto.setSpecial(poiDetailSpecialDtos);
+				} else {
+					poiDetailSumDto.setSpecial(null);
+				}*/
+				
+				poiDetailSumDto.setSpecial(null);
+				
 				List<POIDetailActivitiesDto> poiDetailActivitiesDtos = new ArrayList<POIDetailActivitiesDto>();
 				poiDetailSumDto.setActivities(poiDetailActivitiesDtos);
 
-				/*List<POIDetailTagDto> poiDetailTagDtos = new ArrayList<POIDetailTagDto>();
-				List<BasePOITag> basePOITags = shopping.getSubTag();
+				List<POIDetailTagDto> poiDetailTagDtos = new ArrayList<POIDetailTagDto>();
+				List<ShopTag> basePOITags =	shopping.getShoptags();
 				if (basePOITags != null && basePOITags.size() > 0) {
-					for (BasePOITag basePOITag : basePOITags) {
+					for (ShopTag basePOITag : basePOITags) {
 						POIDetailTagDto poiDetailTagDto = new POIDetailTagDto();
 						poiDetailTagDto.setId(basePOITag.getId());
-						poiDetailTagDto.setName(basePOITag.getTag());
+						poiDetailTagDto.setName(basePOITag.getTitle());
 						poiDetailTagDtos.add(poiDetailTagDto);
 					}
-				}*/
-				poiDetailSumDto.setTag(null);
-
+				} else {
+					poiDetailTagDtos = null;
+				}
+				
+				if(basePOITags != null) {
+					poiDetailSumDto.setTag(poiDetailTagDtos);
+				} else {
+					poiDetailSumDto.setTag(null);
+				}
+				
 				poiDetailSumDto.setTips(shopping.getTips());
-				poiDetailSumDto.setCommentsUrl("");
-				poiDetailSumDto.setCommentFrom("");
+				poiDetailSumDto.setCommentsUrl(shopping.getCommentsUrl());
+				poiDetailSumDto.setCommentFrom(shopping.getCommentsFrom());
 
 				List<POIDetailCommentsDto> poiDetailCommentsDtos = new ArrayList<POIDetailCommentsDto>();
 				List<BasePOIComments> basePOIComments = shopping.getComments();
 				if (basePOIComments != null && basePOIComments.size() > 0) {
 					for (BasePOIComments basePOIComment : basePOIComments) {
 						POIDetailCommentsDto poiDetailCommentsDto = new POIDetailCommentsDto();
-						poiDetailCommentsDto.setNickname(basePOIComment.getNickname());
-						if(basePOIComment.getDate() != null) {
-							poiDetailCommentsDto.setDate(basePOIComment.getDate());
+						if(basePOIComment != null) {
+							poiDetailCommentsDto.setNickname(basePOIComment.getNickname());
+							poiDetailCommentsDto.setDate(null);
+							poiDetailCommentsDto.setText(basePOIComment.getText());
+							poiDetailCommentsDto.setRating(basePOIComment.getRating());
+							poiDetailCommentsDto.setTitle(basePOIComment.getTitle());
+							poiDetailCommentsDto.setLanguage(basePOIComment.getLanguage());
+							poiDetailCommentsDtos.add(poiDetailCommentsDto);
+						} else {
+							poiDetailCommentsDtos = null;
 						}
-						poiDetailCommentsDto.setText(basePOIComment.getText());
-						poiDetailCommentsDto.setRating(basePOIComment.getRating());
-						poiDetailCommentsDto.setTitle(basePOIComment.getTitle());
-						poiDetailCommentsDto.setLanguage(basePOIComment
-								.getLanguage());
-						poiDetailCommentsDtos.add(poiDetailCommentsDto);
 					}
 				}
-				poiDetailSumDto.setComments(poiDetailCommentsDtos);
+				if(basePOIComments != null) {
+					poiDetailSumDto.setComments(poiDetailCommentsDtos);
+				} else {
+					poiDetailSumDto.setComments(null);
+				}
 				poiDetailSumDto.setOpenTableUrl("");
 				poiDetailSumDto.setOpenDay(0);
-
 				poiDetailSumDto.setFacilities(null);
 			}
 		} catch (Exception e) {

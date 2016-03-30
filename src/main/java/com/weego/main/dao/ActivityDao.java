@@ -1,5 +1,8 @@
 package com.weego.main.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.mongojack.JacksonDBCollection;
 import org.springframework.stereotype.Repository;
@@ -21,6 +24,19 @@ public class ActivityDao {
 		BasicDBObject query = new BasicDBObject();
 		query.put("_id", new ObjectId(cityActivityId));
 		return coll.findOne(query);
+	}
+	
+	public List<String> getAllIds() {
+		DBCollection collection = database.getCollection("activities");
+		JacksonDBCollection<Activities, String> coll = JacksonDBCollection.wrap(collection, Activities.class,
+				String.class);
+		List<Activities> activities =  coll.find().toArray();
+		List<String> ids = new ArrayList<String>();
+		for(Activities  activity : activities) {
+			ids.add(activity.getId().toString());
+		}
+		System.out.println(ids.size());
+		return ids;
 	}
 
 }
