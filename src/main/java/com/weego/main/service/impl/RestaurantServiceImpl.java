@@ -118,10 +118,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 				List<POIDetailTagDto> poiDetailTagDtos = new ArrayList<POIDetailTagDto>();
 				List<String> basePOITags = restaurant.getTagsZh();
 				if (basePOITags != null && basePOITags.size() > 0) {
-					for (String basePOITag : basePOITags) {
+					int tagLimit = basePOITags.size();
+					if (tagLimit > 3) {
+						tagLimit = 3;
+					}
+					for (int i = 0; i < tagLimit; i++) {
 						POIDetailTagDto poiDetailTagDto = new POIDetailTagDto();
 						poiDetailTagDto.setId("");
-						poiDetailTagDto.setName(basePOITag);
+						poiDetailTagDto.setName(basePOITags.get(i));
 						poiDetailTagDtos.add(poiDetailTagDto);
 					}
 				} else {

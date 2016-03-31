@@ -1,5 +1,8 @@
 package com.weego.main.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,12 +62,12 @@ public class BasePOIServiceImpl implements BasePOIService {
 				mv.addObject("type", poiDetailSumDto.getType());
 				mv.addObject("coverimage", poiDetailSumDto.getCoverImage());
 				mv.addObject("title", poiDetailSumDto.getName());
-				mv.addObject("english_title", poiDetailSumDto.getNameEn());
+				mv.addObject("english_title", "");
 				mv.addObject("reviews", poiDetailSumDto.getRating());
 				mv.addObject("foreword", poiDetailSumDto.getBriefIntroduction());
 				// 需要循环的tag
 				mv.addObject("tags", poiDetailSumDto.getTag());
-
+				
 				mv.addObject("breif", poiDetailSumDto.getIntroduction());
 				mv.addObject("tips", poiDetailSumDto.getTips());
 

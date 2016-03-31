@@ -13,12 +13,10 @@ import com.weego.main.dao.ActivityDao;
 import com.weego.main.dao.ShoppingDao;
 import com.weego.main.dto.POIDetailActivitiesDto;
 import com.weego.main.dto.POIDetailCommentsDto;
-import com.weego.main.dto.POIDetailSpecialDto;
 import com.weego.main.dto.POIDetailSumDto;
 import com.weego.main.dto.POIDetailTagDto;
 import com.weego.main.model.BasePOIComments;
 import com.weego.main.model.ShopTag;
-import com.weego.main.model.ShoppingBrand;
 import com.weego.main.model.Shoppings;
 import com.weego.main.service.ShoppingService;
 
@@ -119,10 +117,14 @@ public class ShoppingServiceImpl implements ShoppingService {
 				List<POIDetailTagDto> poiDetailTagDtos = new ArrayList<POIDetailTagDto>();
 				List<ShopTag> basePOITags =	shopping.getShoptags();
 				if (basePOITags != null && basePOITags.size() > 0) {
-					for (ShopTag basePOITag : basePOITags) {
+					int tagLimit = basePOITags.size();
+					if (tagLimit > 3) {
+						tagLimit = 3;
+					}
+					for (int i = 0; i < tagLimit; i++) {
 						POIDetailTagDto poiDetailTagDto = new POIDetailTagDto();
-						poiDetailTagDto.setId(basePOITag.getId());
-						poiDetailTagDto.setName(basePOITag.getTitle());
+						poiDetailTagDto.setId(basePOITags.get(i).getId());
+						poiDetailTagDto.setName(basePOITags.get(i).getTitle());
 						poiDetailTagDtos.add(poiDetailTagDto);
 					}
 				} else {

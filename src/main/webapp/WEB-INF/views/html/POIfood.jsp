@@ -251,179 +251,186 @@ header {
 			</c:otherwise>
 		</c:choose>
 		
-	<c:if test="${facilitie != null} ">
-		<div class="details" id="last_tip">
-			<img src="../resource/img/poi/ticket.png">
-			<p>设施</p>
-			<div class="all">
-				<c:choose>
-					<c:when
-						test="${facilitie.wifi =='false' || facilitie.wifi == null}">
-						<div style="display: none" class="little">
-							<img class="little" src="../resource/img/poi/wifi.png">
-							<div class="text" id="little">提供wifi</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little" src="../resource/img/poi/wifi.png">
-							<div class="text" id="little">提供wifi</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when
-						test="${facilitie.reserve =='false' || facilitie.reserve == null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_2.png">
-							<div class="text" id="little">需要预定</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little" src="..resource/img/poi/poi_facilities_.png">
-							<div class="text" id="little">需要预定</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-
-				<c:choose>
-					<c:when
-						test="${facilitie.waiter =='false' || facilitie.waiter ==null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_4.png">
-							<div class="text" id="little">有服务</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_4.png">
-							<div class="text" id="little">有服务</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when test="${facilitie.kid =='false' || facilitie.kid ==null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_5.png">
-							<div class="text" id="little">适合孩子</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_5.png">
-							<div class="text" id="little">适合孩子</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when test="${facilitie.card =='false' || facilitie.card ==null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_7.png">
-							<div class="text" id="little">可刷卡</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_7.png">
-							<div class="text" id="little">可刷卡</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when
-						test="${facilitie.takeout =='false' || facilitie.takeout ==null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_8.png">
-							<div class="text" id="little">可外带</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_8.png">
-							<div class="text" id="little">可外带</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when
-						test="${facilitie.delivery =='false' || facilitie.delivery == null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_9.png">
-							<div class="text" id="little">可送餐</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_9.png">
-							<div class="text" id="little">可送餐</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when test="${facilitie.tv =='false' || facilitie.tv == null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_10.png">
-							<div class="text" id="little">有电视</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_10.png">
-							<div class="text" id="little">有电视</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when
-						test="${facilitie.outseat =='false' || facilitie.outseat == null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_11.png">
-							<div class="text" id="little">有椅子</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_11.png">
-							<div class="text" id="little">有椅子</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
-				<c:choose>
-					<c:when
-						test="${facilitie.group =='false' || facilitie.group == null}">
-						<div style="display: none" class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_12.png">
-							<div class="text" id="little">适合聚餐</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="little">
-							<img class="little"
-								src="../resource/img/poi/poi_facilities_12.png">
-							<div class="text" id="little">适合聚餐</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
+		<c:if test="${ facilitie != null  }">
+			<div class="details" id="last_tip">
+				<c:if test="${facilitie.wifi !='false' || facilitie.reserve !='false' ||
+							  facilitie.waiter !='false' || facilitie.kid !='false' ||
+							  facilitie.card !='false' || facilitie.takeout !='false' ||
+							  facilitie.delivery !='false' || facilitie.tv !='false' ||
+							  facilitie.outseat !='false' || facilitie.group !='false'}"
+				>
+					<img src="../resource/img/poi/ticket.png">
+					<p>设施</p>
+				</c:if>
+				<div class="all">
+					<c:choose>
+						<c:when
+							test="${facilitie.wifi =='false' || facilitie.wifi == null}">
+							<div style="display: none" class="little">
+								<img class="little wifi" src="../resource/img/poi/wifi.png">
+								<div class="text" id="little">提供wifi</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little wifi" src="../resource/img/poi/wifi.png">
+								<div class="text" id="little">提供wifi</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when
+							test="${facilitie.reserve =='false' || facilitie.reserve == null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_2.png">
+								<div class="text" id="little">需要预定</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little" src="..resource/img/poi/poi_facilities_.png">
+								<div class="text" id="little">需要预定</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+	
+					<c:choose>
+						<c:when
+							test="${facilitie.waiter =='false' || facilitie.waiter ==null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_4.png">
+								<div class="text" id="little">有服务</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_4.png">
+								<div class="text" id="little">有服务</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${facilitie.kid =='false' || facilitie.kid ==null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_5.png">
+								<div class="text" id="little">适合孩子</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_5.png">
+								<div class="text" id="little">适合孩子</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${facilitie.card =='false' || facilitie.card ==null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_7.png">
+								<div class="text" id="little">可刷卡</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_7.png">
+								<div class="text" id="little">可刷卡</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when
+							test="${facilitie.takeout =='false' || facilitie.takeout ==null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_8.png">
+								<div class="text" id="little">可外带</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_8.png">
+								<div class="text" id="little">可外带</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when
+							test="${facilitie.delivery =='false' || facilitie.delivery == null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_9.png">
+								<div class="text" id="little">可送餐</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_9.png">
+								<div class="text" id="little">可送餐</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${facilitie.tv =='false' || facilitie.tv == null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_10.png">
+								<div class="text" id="little">有电视</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_10.png">
+								<div class="text" id="little">有电视</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when
+							test="${facilitie.outseat =='false' || facilitie.outseat == null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_11.png">
+								<div class="text" id="little">有椅子</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_11.png">
+								<div class="text" id="little">有椅子</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when
+							test="${facilitie.group =='false' || facilitie.group == null}">
+							<div style="display: none" class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_12.png">
+								<div class="text" id="little">适合聚餐</div>
+							</div>
+						</c:when>
+						<c:otherwise>
+							<div class="little">
+								<img class="little"
+									src="../resource/img/poi/poi_facilities_12.png">
+								<div class="text" id="little">适合聚餐</div>
+							</div>
+						</c:otherwise>
+					</c:choose>
+				</div>
 			</div>
-		</div>
-	</c:if>
+		</c:if>
 	</div>
 </body>
 <script type="text/javascript" src="../js/POI.js"></script>

@@ -26,7 +26,7 @@
 		text-align: center;
 		font-size:68px ;
 		font-weight: bold;
-		text-shadow:1px 1px 1px rgba(0,0,48,0.6);
+		text-shadow:2px 2px 1px rgba(0,0,48,0.6);
 	}
 	.author{
 		text-align: center;
@@ -40,7 +40,7 @@
 	}
 	.author .head img{
 		margin: 20px;
-		width: 86%;
+		width: 81%;
 		border-radius: 50%;
 	}
 	.author h1{
@@ -56,13 +56,13 @@
 		text-align: center;
 		margin-top:40px;
 	}
-	.author .line{
-		margin:60px 0;
+	.line1{
+		margin:60px 0 85px 0;
 		height: 30px;
 		background-repeat:no-repeat;
 	}
-	.author .line img{
-		height: 20px;
+	.line1 img{
+		width:100%;
 	}
 	.from{
 		margin: 6% 3%;
@@ -74,12 +74,15 @@
 		font-size: 38px;
 		line-height: 65px;
 	}
-	
+
 	.drb img{
 	width: 4%;
     }
 	.page{
-		margin:5% 0;
+		margin:80px 0 5% 0;
+	}
+	.ccc{
+	margin-bottom:105px;
 	}
 	.page .page_title{
 		margin:70px 30px 36px 30px;
@@ -103,26 +106,30 @@
 		height:100%;
 	}
 	.page .poi .type{
-		padding-top: 6px;
-		font-size: 37px;
-		position: relative;
-		top: -500px;
-		background-image:url(../resource/img/pgc/lable@2x.png);
+		padding-right: 28px;
+		padding-top: 12px;
+		font-size: 38px;
+		position: absolute;
+		top: 8%;
+		background-image:url(../resource/img/pgc/lable.png);
 		background-size: cover;
-		height: 66px;
-		width: 223px;
+		height: 60px;
+		width: 215px;
 	}
 	.page .poi .type .type_text{
 	width: 191px;
 	text-align:center;
 	}
+	
 	.page .poi .center{
 		width: 550px;
 		margin:0 auto;
 		border-bottom: 1px solid #fff;
-		position: relative;
-		top: -490px;
+		position: absolute;
+		top: 28%;
+		left: 20%;
 	}
+	
 	.page .poi .center .line{
 		border-bottom: 1px solid #fff;
 		width: 200px;
@@ -142,7 +149,7 @@
 		text-align: center;
 		color: #fff;
 		z-index: 200;
-		text-shadow:1px 1px 1px rgba(0,0,48,0.6);
+		text-shadow:2px 2px 1px rgba(0,0,48,0.6);
 		margin:56px 0;
 	}
 	.page .page_pic{

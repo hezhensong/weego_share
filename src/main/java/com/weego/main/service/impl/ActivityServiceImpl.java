@@ -29,7 +29,7 @@ public class ActivityServiceImpl implements ActivityService {
 			if (activity != null) {
 				mv.addObject("title", activity.getTitle());
 				mv.addObject("time", activity.getActTime());
-				mv.addObject("tag", activity.getType());
+				mv.addObject("tag", "");
 				mv.addObject("ip", activity.getDetailAddress());
 				mv.addObject("bg", imageUrl + activity.getCoverImage());
 				mv.addObject("web", activity.getActUrl());

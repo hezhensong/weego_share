@@ -134,6 +134,8 @@ public class PgcServiceImpl implements PgcService {
 			List<BasePOILabel> basePOITags = attraction.getSubLabelNew();
 			if (basePOITags != null && basePOITags.size() > 0) {
 				return basePOITags.get(0).getLabel();
+			} else {
+				return "";
 			}
 		} else if (intType == 1) {
 			Restaurants restaurant = restaurantDao.getRestaurantById(id);
@@ -141,12 +143,16 @@ public class PgcServiceImpl implements PgcService {
 			List<String> basePOITags = restaurant.getTagsZh();
 			if (basePOITags != null && basePOITags.size() > 0) {
 				return basePOITags.get(0);
+			} else {
+				return "";
 			}
 		} else if (intType == 2) {
 			Shoppings shopping = shoppingDao.getShoppingById(id);
 			List<ShopTag> basePOITags =	shopping.getShoptags();
 			if (basePOITags != null && basePOITags.size() > 0) {
 				return basePOITags.get(0).getTitle();
+			} else {
+				return "";
 			}
 		} 
 
