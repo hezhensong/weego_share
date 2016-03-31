@@ -16,6 +16,9 @@ public class News {
     @JsonProperty("lead_text")
     private String leadText;
 
+    @JsonProperty("image")
+    private String image;
+
     @JsonProperty("news_content")
     private List<NewsContent> newsContentList;
 
@@ -42,6 +45,14 @@ public class News {
 
     public void setLeadText(String leadText) {
         this.leadText = leadText;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public List<NewsContent> getNewsContentList() {

@@ -29,6 +29,7 @@ public class NewsServiceImpl implements NewsService {
             NewsDto newsDto = new NewsDto();
             newsDto.setLead(news.getLead());
             newsDto.setLeadText(news.getLeadText());
+            newsDto.setImage(news.getImage());
 
             List<NewsContentDto> newsContentDtoList = new ArrayList<>();
             newsDto.setContents(newsContentDtoList);

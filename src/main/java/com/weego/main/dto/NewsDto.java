@@ -8,6 +8,8 @@ public class NewsDto {
 
     private String leadText;
 
+    private String image;
+
     private List<NewsContentDto> contents;
 
     public String getLead() {
@@ -24,6 +26,14 @@ public class NewsDto {
 
     public void setLeadText(String leadText) {
         this.leadText = leadText;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public List<NewsContentDto> getContents() {
