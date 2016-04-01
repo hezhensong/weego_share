@@ -208,10 +208,10 @@ html,body{width:100%; position:relative;}
 	text-align: center;
 	margin-top:90px;
 }
-.tips .good_comment{
-	margin:6% 12px;
-	font-size: 30px;
-	line-height: 50px;
+.tips .good_comment{	
+	.tips .good_comment { margin: 6% 12px 0 12px;
+ 	font-size: 30px;
+ 	line-height: 50px;
 }
 
 .tips .good_comment img{
@@ -223,7 +223,7 @@ html,body{width:100%; position:relative;}
 }
 
 .message{
-	margin:-115px 20px 100px 20px;
+	margin: -50px 20px 100px 20px;
 }
 .message .details{
 	margin-left:12px;
