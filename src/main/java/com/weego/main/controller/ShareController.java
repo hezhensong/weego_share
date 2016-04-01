@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.weego.main.service.ActivityService;
 import com.weego.main.service.BasePOIService;
+import com.weego.main.service.NewsService;
 import com.weego.main.service.PgcService;
 
 @Controller
@@ -24,6 +25,9 @@ public class ShareController {
     
     @Autowired
     BasePOIService basePOIService;
+    
+    @Autowired
+    NewsService newsService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
@@ -56,4 +60,10 @@ public class ShareController {
         return basePOIService.getPOIDetail(poiId, type);
     }
 
+    @RequestMapping(value = "/news", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView getPOI(@RequestParam("newsId") String newsId ) {
+
+        return newsService.getSpecificNews(newsId);
+    }
 }
