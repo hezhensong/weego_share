@@ -52,7 +52,8 @@ header {
 		<div class="score">
 			<img class="reviews_pic" src="">
 			<!-- 判断 -->
-			<div class="reviews">${reviews}分</div>
+			<div class="reviews">${reviews}</div>
+			<div class="reviews1">分</div>
 		</div>
 		</c:if>
 	</div>
@@ -125,7 +126,7 @@ header {
 			<div class="tips">
 				<div class="breif">
 					<img src="../resource/img/poi/spot.png">
-					<div class="h3">景点</div>
+					<div class="h3">亮点</div>
 				</div>
 				<c:forEach items="${recommends}" var="recommend">
 					<div class="menu first_menu"
@@ -156,10 +157,11 @@ header {
 				</div>
 				<!-- finish js -->
 				<div class="right">
-					<c:if test="${comments.rating != 0 }">
-						<p class="comments_rating">${comments.rating}分</p>
+					<c:if test="${reviews != 0.0 }">
+						<p class="comments_rating reviews">${reviews}</p>
+						<p class="comments_rating">分</p>
 					</c:if>
-					<img class="rating_pic" src="">
+					<img class="rating_pic reviews_pic" src="">
 				</div>
 				<!-- finish js -->
 			</div>
