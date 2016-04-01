@@ -2,6 +2,7 @@ package com.weego.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +14,7 @@ import com.weego.main.service.BasePOIService;
 import com.weego.main.service.PgcService;
 
 @Controller
-@RequestMapping("/share/v1")
+@RequestMapping("/app")
 public class ShareController {
 	
 	@Autowired
@@ -35,23 +36,24 @@ public class ShareController {
         return mv;
     }
     
-    @RequestMapping(value = "/pgc", method = RequestMethod.GET)
+    @RequestMapping(value = "/pgc/{pgcId}", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView getPgc(@RequestParam("pgcId") String pgcId) {
+    public ModelAndView getPgc(@PathVariable("pgcId") String pgcId) {
 
         return pgcService.getSpecifiedPgc(pgcId);
     }
     
-    @RequestMapping(value = "/activity", method = RequestMethod.GET)
+    @RequestMapping(value = "/activity/{activityId}", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView getActivity(@RequestParam("activityId") String activityId) {
+    public ModelAndView getActivity(@PathVariable("activityId") String activityId) {
 
         return activityService.getSpecifiedActivity(activityId);
     }
     
-    @RequestMapping(value = "/poi", method = RequestMethod.GET)
+    @RequestMapping(value = "/{type}/poi/{poiId}", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView getPOI(@RequestParam("poiId") String poiId,@RequestParam("type") Integer type) {
+    public ModelAndView getPOI(@PathVariable("type") Integer type,
+    		@PathVariable("poiId") String poiId) {
 
         return basePOIService.getPOIDetail(poiId, type);
     }
