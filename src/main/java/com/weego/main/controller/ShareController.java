@@ -36,26 +36,25 @@ public class ShareController {
         return mv;
     }
     
-    @RequestMapping(value = "/pgc/{pgcId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/pgc", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView getPgc(@PathVariable("pgcId") String pgcId) {
+    public ModelAndView getPgc(@RequestParam("pgcId") String pgcId) {
 
         return pgcService.getSpecifiedPgc(pgcId);
     }
     
-    @RequestMapping(value = "/activity/{activityId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/activity", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView getActivity(@PathVariable("activityId") String activityId) {
+    public ModelAndView getActivity(@RequestParam("activityId") String activityId) {
 
         return activityService.getSpecifiedActivity(activityId);
     }
     
-    @RequestMapping(value = "/{type}/poi/{poiId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/poi", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView getPOI(@PathVariable("type") Integer type,
-    		@PathVariable("poiId") String poiId) {
+    public ModelAndView getPOI(@RequestParam("poiId") String poiId,
+    		@RequestParam("type") Integer type) {
 
         return basePOIService.getPOIDetail(poiId, type);
     }
-
 }
