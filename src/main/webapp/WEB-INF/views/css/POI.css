@@ -73,6 +73,12 @@ html,body{width:100%; position:relative;}
 	color: #fff;
 	opacity: 0.5;
 }
+.title .score .reviews1{
+	display: inline-block;
+	font-size: 32px;
+	color: #fff;
+	opacity: 0.5;
+}
 .tips{
 	padding-bottom: 62px;
 	border-bottom: 1px solid rgba(138,138,138,0.4);
@@ -200,6 +206,7 @@ html,body{width:100%; position:relative;}
 	padding-left: 40px;
 }
 .tips .comment .right p{
+	display:inline-block;
 	font-size: 59px;
 	margin-bottom: 60px;
 }
