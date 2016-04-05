@@ -291,7 +291,7 @@ header {
 						</c:when>
 						<c:otherwise>
 							<div class="little">
-								<img class="little" src="..resource/img/poi/poi_facilities_.png">
+								<img class="little" src="../resource/img/poi/poi_facilities_2.png">
 								<div class="text wifi" id="little">需要预定</div>
 							</div>
 						</c:otherwise>

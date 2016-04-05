@@ -1,7 +1,6 @@
 var _tag = $(".type").html();
 var _comment_from = $("#comment_from").html();
 var _reviews =$(".reviews").html();
-alert(_reviews);
 
 $(document).ready(function(){
 	$("#single").addClass("first")
@@ -13,7 +12,7 @@ if(_tag == ""){
 
 if(_comment_from == "来自于google"){
 	$("#comment_pic").attr("src","../resource/img/poi/google.png");
-	$(".comment").width(577);
+	$(".comment").width(475);
 }else{
 	$("#comment_pic").attr("src","../resource/img/poi/tripadvisor.png");
 }
