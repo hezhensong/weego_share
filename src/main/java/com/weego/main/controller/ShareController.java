@@ -2,6 +2,7 @@ package com.weego.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +15,7 @@ import com.weego.main.service.NewsService;
 import com.weego.main.service.PgcService;
 
 @Controller
-@RequestMapping("/share/v1")
+@RequestMapping("/app")
 public class ShareController {
 	
 	@Autowired
@@ -55,10 +56,12 @@ public class ShareController {
     
     @RequestMapping(value = "/poi", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView getPOI(@RequestParam("poiId") String poiId,@RequestParam("type") Integer type) {
+    public ModelAndView getPOI(@RequestParam("poiId") String poiId,
+    		@RequestParam("type") Integer type) {
 
         return basePOIService.getPOIDetail(poiId, type);
     }
+
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     @ResponseBody
@@ -66,4 +69,5 @@ public class ShareController {
 
         return newsService.getSpecificNews(newsId);
     }
+
 }

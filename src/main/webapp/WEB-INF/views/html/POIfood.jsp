@@ -274,7 +274,7 @@ header {
 						<c:otherwise>
 							<div class="little">
 								<img class="little wifi" src="../resource/img/poi/wifi.png">
-								<div class="text" id="little">提供wifi</div>
+								<div class="text wifi" id="little">提供wifi</div>
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -290,7 +290,7 @@ header {
 						<c:otherwise>
 							<div class="little">
 								<img class="little" src="..resource/img/poi/poi_facilities_.png">
-								<div class="text" id="little">需要预定</div>
+								<div class="text wifi" id="little">需要预定</div>
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -324,7 +324,7 @@ header {
 							<div class="little">
 								<img class="little"
 									src="../resource/img/poi/poi_facilities_5.png">
-								<div class="text" id="little">适合孩子</div>
+								<div class="text wifi" id="little">适合孩子</div>
 							</div>
 						</c:otherwise>
 					</c:choose>
@@ -424,7 +424,7 @@ header {
 							<div class="little">
 								<img class="little"
 									src="../resource/img/poi/poi_facilities_12.png">
-								<div class="text" id="little">适合聚餐</div>
+								<div class="text wifi" id="little">适合聚餐</div>
 							</div>
 						</c:otherwise>
 					</c:choose>

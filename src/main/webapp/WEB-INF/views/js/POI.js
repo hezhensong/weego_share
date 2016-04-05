@@ -13,6 +13,7 @@ if(_tag == ""){
 
 if(_comment_from == "来自于google"){
 	$("#comment_pic").attr("src","../resource/img/poi/google.png");
+	$(".comment").width(495);
 }else{
 	$("#comment_pic").attr("src","../resource/img/poi/tripadvisor.png");
 }
