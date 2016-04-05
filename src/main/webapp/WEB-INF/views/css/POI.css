@@ -184,7 +184,7 @@ html,body{width:100%; position:relative;}
 	width: 568px;
 }
 .rating_pic{
-	width: 75%;
+	width: 100%;
 }
 
 
@@ -201,6 +201,7 @@ html,body{width:100%; position:relative;}
 	font-size: 31px;
 }
 .tips .comment .right{
+	width: 200px;
 	display: inline-block;
 	float: left;
 	padding-left: 40px;
@@ -309,7 +310,7 @@ html,body{width:100%; position:relative;}
 	margin:0;
 }
 .wifi{
-	margin-left: 18px;
+	margin-left: -22px;
 }
 .message .details .all .little .text{
 	margin-top: 16px;
