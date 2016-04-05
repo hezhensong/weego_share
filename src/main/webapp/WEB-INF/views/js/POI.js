@@ -1,6 +1,7 @@
 var _tag = $(".type").html();
 var _comment_from = $("#comment_from").html();
 var _reviews =$(".reviews").html();
+alert(_reviews);
 
 $(document).ready(function(){
 	$("#single").addClass("first")
@@ -12,28 +13,28 @@ if(_tag == ""){
 
 if(_comment_from == "来自于google"){
 	$("#comment_pic").attr("src","../resource/img/poi/google.png");
-	$(".comment").width(495);
+	$(".comment").width(577);
 }else{
 	$("#comment_pic").attr("src","../resource/img/poi/tripadvisor.png");
 }
 
 if(_reviews == 0.0){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews0.png");
-}else if(0.0 < _reviews <= 1.0){
+}else if(_reviews <=1.0 && _reviews > 0.0){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews1.png");
-}else if(1.0 < _reviews <= 1.5){
+}else if(_reviews <=1.5 && _reviews > 1.0){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews1_5.png");
-}else if(1.5 < _reviews <= 2.0){
+}else if(_reviews <=2.0 && _reviews > 1.5){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews2.png");
-}else if(2.0 < _reviews <= 2.5){
+}else if(_reviews <=2.5 && _reviews > 2.0){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews2_5.png");
-}else if(2.5 < _reviews <= 3){
+}else if(_reviews <=3.0 && _reviews > 2.5){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews3.png");
-}else if(3.0 < _reviews <= 3.5){
+}else if(_reviews <=3.5 && _reviews > 3.0){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews3_5.png");
-}else if(3.5 < _reviews <= 4.0){
+}else if(_reviews <=4.0 && _reviews > 3.5){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews4.png");
-}else if(4.0 < _reviews <= 4.5){
+}else if(_reviews <=4.5 && _reviews > 4.0){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews4_5.png");
 }else{
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews5.png");
