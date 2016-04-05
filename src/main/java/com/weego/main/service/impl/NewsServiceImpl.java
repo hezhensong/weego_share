@@ -9,6 +9,7 @@ import com.weego.main.model.NewsContent;
 import com.weego.main.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +53,20 @@ public class NewsServiceImpl implements NewsService {
 
             return newsDto;
         }
+    }
+
+    @Override
+    public ModelAndView getSpecificNews(String newsId) {
+        ModelAndView mv = new ModelAndView("news");
+        News news = newsDao.getNewsById(newsId);
+        if (news == null) {
+            mv = null;
+        } else{
+            mv.addObject("lead", news.getLead());
+            mv.addObject("leadText", news.getLeadText());
+            mv.addObject("image", news.getImage());
+            mv.addObject("newsContentList", news.getNewsContentList());
+        }
+        return mv;
     }
 }
