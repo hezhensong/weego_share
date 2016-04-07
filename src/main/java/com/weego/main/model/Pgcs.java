@@ -54,6 +54,8 @@ public class Pgcs {
 
 	private String type;
 
+	private PgcOriginal original;
+
 	public String getId() {
 		return id;
 	}
@@ -188,6 +190,14 @@ public class Pgcs {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public PgcOriginal getOriginal() {
+		return original;
+	}
+
+	public void setOriginal(PgcOriginal original) {
+		this.original = original;
 	}
 
 }

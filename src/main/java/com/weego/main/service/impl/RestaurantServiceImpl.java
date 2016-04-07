@@ -143,7 +143,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 				List<POIDetailCommentsDto> poiDetailCommentsDtos = new ArrayList<POIDetailCommentsDto>();
 				List<Object> comments = restaurant.getComments();
-				if (comments != null) {
+				if (comments != null && comments.size() > 0) {
 					if (comments.get(0) instanceof String) {
 						poiDetailSumDto.setComments(null);
 					} else if (comments.get(0) instanceof Map) {
