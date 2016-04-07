@@ -9,6 +9,9 @@ public class PgcImageDesc {
 	@JsonProperty("p_PGC_Id")
 	private String pgcId;
 
+	@JsonProperty("poi_image_desc")
+	private String poiImageDesc;
+
 	@JsonProperty("section_image")
 	private String sectionImage;
 
@@ -34,6 +37,14 @@ public class PgcImageDesc {
 
 	public void setSectionImage(String sectionImage) {
 		this.sectionImage = sectionImage;
+	}
+
+	public String getPoiImageDesc() {
+		return poiImageDesc;
+	}
+
+	public void setPoiImageDesc(String poiImageDesc) {
+		this.poiImageDesc = poiImageDesc;
 	}
 
 }
