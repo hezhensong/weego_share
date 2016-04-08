@@ -1,3 +1,4 @@
+package share;
 import java.util.List;
 
 import org.junit.Test;
@@ -10,6 +11,7 @@ import com.weego.main.dao.PeopleDao;
 import com.weego.main.dao.PgcDao;
 import com.weego.main.dao.RestaurantDao;
 import com.weego.main.dao.ShoppingDao;
+import com.weego.main.model.Activities;
 
 public class ActivityDaoTest extends BaseTest {
 
@@ -57,9 +59,6 @@ public class ActivityDaoTest extends BaseTest {
 			System.out.println(shoppingDao.getShoppingById(id));
 		}*/
 
-		String id = "56ab050dcc15499619000251";
-		System.out.println(pgcDao.getSpecifiedPgc(id));
-		
 		/*	List<String> ids = pgcDao.getAllIds();
 		for (String id : ids) {
 			System.out.println(id);
@@ -70,6 +69,18 @@ public class ActivityDaoTest extends BaseTest {
 		for (String id : ids) {
 			System.out.println(peopleDao.getPeopleById(id));
 		}*/
-
+		
+		/*	List<String> ids = activityDao.getAllIds();
+		for(String id : ids) {
+			System.out.println(activityDao.getSpecifiedCity(id));
+		}*/
+		
+		/*List<String> ids = areaDao.getAllIds();
+		for(String id : ids) {
+			System.out.println(areaDao.getAreaById(id));
+		}*/
+		
+		System.out.println((String) null);
+		System.out.println((Boolean) null);
 	}
 }

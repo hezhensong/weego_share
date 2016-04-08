@@ -89,6 +89,22 @@ public class Areas {
 
 	private String website;
 
+	private Object periods;
+
+	@JsonProperty("place_id")
+	private Object placeId;
+
+	@JsonProperty("comments_from")
+	private Object commentsFrom;
+
+	private String lable;
+
+	@JsonProperty("create_flag")
+	private Object createFlag;
+	
+	@JsonProperty("checkFlag")
+	private Object checkFlag;
+
 	public String getId() {
 		return id;
 	}
@@ -343,6 +359,46 @@ public class Areas {
 
 	public void setWebsite(String website) {
 		this.website = website;
+	}
+
+	public Object getPeriods() {
+		return periods;
+	}
+
+	public void setPeriods(Object periods) {
+		this.periods = periods;
+	}
+
+	public Object getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(Object placeId) {
+		this.placeId = placeId;
+	}
+
+	public Object getCommentsFrom() {
+		return commentsFrom;
+	}
+
+	public void setCommentsFrom(Object commentsFrom) {
+		this.commentsFrom = commentsFrom;
+	}
+
+	public String getLable() {
+		return lable;
+	}
+
+	public void setLable(String lable) {
+		this.lable = lable;
+	}
+
+	public Object getCreateFlag() {
+		return createFlag;
+	}
+
+	public void setCreateFlag(Object createFlag) {
+		this.createFlag = createFlag;
 	}
 
 }

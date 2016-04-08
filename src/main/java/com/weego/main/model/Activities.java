@@ -43,7 +43,7 @@ public class Activities {
 	private Date endTime;
 
 	@JsonProperty("images_desc")
-	private List<String> imageDesc;
+	private List<ActivitiesImagesDesc> imageDesc;
 
 	private String latitude;
 
@@ -152,11 +152,11 @@ public class Activities {
 		this.endTime = endTime;
 	}
 
-	public List<String> getImageDesc() {
+	public List<ActivitiesImagesDesc> getImageDesc() {
 		return imageDesc;
 	}
 
-	public void setImageDesc(List<String> imageDesc) {
+	public void setImageDesc(List<ActivitiesImagesDesc> imageDesc) {
 		this.imageDesc = imageDesc;
 	}
 
