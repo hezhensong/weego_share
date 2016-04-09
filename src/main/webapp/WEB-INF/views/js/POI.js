@@ -17,9 +17,7 @@ if(_comment_from == "来自于google"){
 	$("#comment_pic").attr("src","../resource/img/poi/tripadvisor.png");
 }
 
-if(_reviews == 0.0){
-	$(".reviews_pic").attr("src","../resource/img/poi/reviews0.png");
-}else if(_reviews <=1.0 && _reviews > 0.0){
+if(_reviews <=1.0 && _reviews > 0.0){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews1.png");
 }else if(_reviews <=1.5 && _reviews > 1.0){
 	$(".reviews_pic").attr("src","../resource/img/poi/reviews1_5.png");

@@ -52,7 +52,8 @@ header {
 		<div class="score">
 			<img class="reviews_pic" src="">
 			<!-- 判断 -->
-			<div class="reviews">${reviews}</div><div class="reviews">分</div>
+			<div class="reviews">${reviews}</div>
+			<div class="reviews1">分</div>
 		</div>
 		</c:if>
 	</div>
@@ -156,11 +157,11 @@ header {
 				</div>
 				<!-- finish js -->
 				<div class="right">
-					<c:if test="${comments.rating != 0 }">
-						<p class="comments_rating"></p><!-- ${comments.rating} -->
+					<c:if test="${reviews != 0.0}">
+						<p class="comments_rating reviews">${reviews}</p>
 						<p class="comments_rating">分</p>
 					</c:if>
-					<img class="rating_pic" src="">
+					<img class="rating_pic reviews_pic" src="">
 				</div>
 				<!-- finish js -->
 			</div>
@@ -290,7 +291,11 @@ header {
 						</c:when>
 						<c:otherwise>
 							<div class="little">
-								<img class="little" src="..resource/img/poi/poi_facilities_.png">
+<<<<<<< HEAD
+								<img class="little" src="..resource/img/poi/poi_facilities_2.png">
+=======
+								<img class="little" src="../resource/img/poi/poi_facilities_2.png">
+>>>>>>> 27e3a4090c7fc7a9e4edf151be587e5475b70e9b
 								<div class="text wifi" id="little">需要预定</div>
 							</div>
 						</c:otherwise>
