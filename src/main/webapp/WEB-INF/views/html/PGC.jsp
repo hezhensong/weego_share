@@ -69,8 +69,8 @@ header {
 				<c:when
 					test="${PgcPoi.paragraph.title =='' || PgcPoi.paragraph.title == null}">
 					<div style="display: none" class="page_title">
-						<div class="small"></div>
-						<h2 id="text_title">${PgcPoi.paragraph.title}</h2>
+						<%-- <div class="small"></div>
+						<h2 id="text_title">${PgcPoi.paragraph.title}</h2> --%>
 					</div>
 				</c:when>
 				<c:otherwise>
@@ -118,15 +118,17 @@ header {
 
 			<c:choose>
 				<c:when
-					test="${PgcPoi.image.url =='' || PgcPoi.image.url == null}">
-					<div style="display: none" class="page_pic"></div>
+					test="${PgcPoi.image.url == null || PgcPoi.image.url == '' }">
+					<div style="display:none" class="page_pic"></div>
 				</c:when>
 				<c:otherwise>
 					<div class="page_pic">
-					<div id="pic" style="background-image:url(${PgcPoi.image.url})"></div>
-						<h3 class="resource">
-							(图片来源：<span id="pic_resource">${PgcPoi.image.source}</span>)
-						</h3>
+						<div id="pic" style="background-image:url(${PgcPoi.image.url})"></div>
+						<c:if test = "${PgcPoi.image.source != '' && PgcPoi.image.source != null }">
+							<h3 class="resource">
+								<span id="pic_resource">${PgcPoi.image.source}</span>
+							</h3>
+						</c:if>
 					</div>
 				</c:otherwise>
 			</c:choose>
@@ -150,6 +152,4 @@ header {
 	</c:choose>
 </body>
 <script type="text/javascript" src="../js/PGC.js"></script>
-
-
 </html>

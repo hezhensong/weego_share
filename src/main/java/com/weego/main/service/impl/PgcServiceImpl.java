@@ -44,6 +44,7 @@ public class PgcServiceImpl implements PgcService {
 	private String firstImageUrl = "http://weegotest.b0.upaiyun.com/attractions/origin/";
 	private String secondImageUrl = "http://weegotest.b0.upaiyun.com/restaurant/origin/";
 	private String thirdImageUrl = "http://weegotest.b0.upaiyun.com/shopping/origin/";
+	private String fourthImageUrl = "http://weegotest.b0.upaiyun.com/shoparea/origin/";
 	
 	
 	@Autowired
@@ -224,121 +225,50 @@ public class PgcServiceImpl implements PgcService {
 		 if(obj != null && obj.size() > 0) {
 			 for(int i=0;i<obj.size();i++) {
 				 PgcContentDto pgcContentDto = new PgcContentDto();
-				 pgcContentDto.setImage(null);
+				 
+				 PgcImageDto pgcImageDto = new PgcImageDto();
+				 if((String) obj.get(i).get("section_image") == null) {
+					 pgcImageDto.setUrl(null);
+				 } else {
+					 pgcImageDto.setUrl(secondImageUrl + (String) obj.get(i).get("section_image"));
+				 }
+				 
+				 pgcImageDto.setSource((String) obj.get(i).get("image_title"));
+				 pgcContentDto.setImage(pgcImageDto);
 				 
 				 ParagraphDto paragraphDto = new ParagraphDto();
 				 paragraphDto.setDesc((String) obj.get(i).get("poi_desc"));
 				 paragraphDto.setTitle((String) obj.get(i).get("poi_image_desc"));
+				 System.out.println(paragraphDto.getTitle());
 				 pgcContentDto.setParagraph(paragraphDto);
 				 
 				 PgcPoiDto pgcPoiDto = new PgcPoiDto();
 				 pgcPoiDto.setType((String) obj.get(i).get("type"));
-				 if(obj.get(i).get("detail") != null) {
-					Map<String, Object> map = (Map<String, Object>) obj.get(i).get("detail");
-					if(map.size() > 0) {
-						if("0".equals(obj.get(i).get("type"))) {
-							if(map.containsKey("attractions")) {
-								pgcPoiDto.setTitle((String) map.get("attractions"));
-							} else {
-								pgcPoiDto.setTitle("");
-							}
-							
-							if(map.containsKey("coverImageName")) {
-								pgcPoiDto.setImage(firstImageUrl + map.get("coverImageName"));
-							} else {
-								pgcPoiDto.setImage("");
-							}
-							
-							if(map.containsKey("subLabelNew")) {
-								List<Map<String, Object>> tags = (List<Map<String, Object>>) map.get("subLabelNew");
-								if(tags != null && tags.size() > 0) {
-									pgcPoiDto.setTag((String) tags.get(0).get("label"));
-								} else {
-									pgcPoiDto.setTag("");
-								}
-							} else {
-								pgcPoiDto.setTag("");
-							}
-							
-						} else if("1".equals(obj.get(i).get("type"))) {
-							if(map.containsKey("name")) {
-								pgcPoiDto.setTitle((String) map.get("name"));
-							} else {
-								pgcPoiDto.setTitle("");
-							}
-							
-							if(map.containsKey("cover_image")) {
-								pgcPoiDto.setImage(firstImageUrl + map.get("cover_image"));
-							} else {
-								pgcPoiDto.setImage("");
-							}
-							
-							if(map.containsKey("tags_zh")) {
-								List<String> tags = (List<String>) map.get("tags_zh");
-								if(tags != null && tags.size() > 0) {
-									pgcPoiDto.setTag((String) tags.get(0));
-								} else {
-									pgcPoiDto.setTag("");
-								}
-							} else {
-								pgcPoiDto.setTag("");
-							}
-							
-						} else if("2".equals(obj.get(i).get("type"))) {
-							if(map.containsKey("name")) {
-								pgcPoiDto.setTitle((String) map.get("name"));
-							} else {
-								pgcPoiDto.setTitle("");
-							}
-							
-							if(map.containsKey("cover_image")) {
-								pgcPoiDto.setImage(firstImageUrl + map.get("cover_image"));
-							} else {
-								pgcPoiDto.setImage("");
-							}
-							
-							if(map.containsKey("category")) {
-								List<Map<String, Object>> tags = (List<Map<String, Object>>) map.get("category");
-								if(tags != null && tags.size() > 0) {
-									pgcPoiDto.setTag((String) tags.get(0).get("name"));
-								} else {
-									pgcPoiDto.setTag("");
-								}
-							} else {
-								pgcPoiDto.setTag("");
-							}
-							
-							
-						} else if("3".equals(obj.get(i).get("type"))) {
-							if(map.containsKey("area_name")) {
-								pgcPoiDto.setTitle((String) map.get("area_name"));
-							} else {
-								pgcPoiDto.setTitle("");
-							}
-							
-							if(map.containsKey("cover_image")) {
-								pgcPoiDto.setImage(firstImageUrl + map.get("cover_image"));
-							} else {
-								pgcPoiDto.setImage("");
-							}
-							
-							if(map.containsKey("tags")) {
-								List<String> tags = (List<String>) map.get("tags");
-								if(tags != null && tags.size() > 0) {
-									pgcPoiDto.setTag((String) tags.get(0));
-								} else {
-									pgcPoiDto.setTag("");
-								}
-							} else {
-								pgcPoiDto.setTag("");
-							}
-						}
-						
-					} else {
-						pgcContentDto.setPoi(null);
-					}
-				 } else {
-					 pgcContentDto.setPoi(null);
+				 pgcPoiDto.setTitle((String) obj.get(i).get("name"));
+				 if("0".equals(obj.get(i).get("type"))) { 
+					 if((String) obj.get(i).get("poi_image") == null) {
+						 pgcPoiDto.setImage(null);
+					 } else {
+						 pgcPoiDto.setImage(firstImageUrl + (String) obj.get(i).get("poi_image"));
+					 } 
+				 }else if("1".equals(obj.get(i).get("type"))) {
+					 if((String) obj.get(i).get("poi_image") == null) {
+						 pgcPoiDto.setImage(null);
+					 } else {
+						 pgcPoiDto.setImage(secondImageUrl + (String) obj.get(i).get("poi_image"));
+					 } 
+				 } else if("2".equals(obj.get(i).get("type"))) {
+					 if((String) obj.get(i).get("poi_image") == null) {
+						 pgcPoiDto.setImage(null);
+					 } else {
+						 pgcPoiDto.setImage(thirdImageUrl + (String) obj.get(i).get("poi_image"));
+					 } 
+				 } else if("3".equals(obj.get(i).get("type"))) {
+					 if((String) obj.get(i).get("poi_image") == null) {
+						 pgcPoiDto.setImage(null);
+					 } else {
+						 pgcPoiDto.setImage(fourthImageUrl + (String) obj.get(i).get("poi_image"));
+					 } 
 				 }
 				 pgcContentDto.setPoi(pgcPoiDto);
 				 pgcPoiDtoList.add(pgcContentDto);

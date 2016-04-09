@@ -289,7 +289,13 @@ public class BasePOIServiceImpl implements BasePOIService {
 				} else {
 					poiDetailCommentsDto.setRating(5);
 				}
-				poiDetailCommentsDto.setTitle((String) obj.get(i).get("title"));
+				
+				String title = (String) obj.get(i).get("title");
+				if(title == null || "".equals(title)) {
+					poiDetailCommentsDto.setTitle((String) obj.get(i).get("nickname"));
+				} else {
+					poiDetailCommentsDto.setTitle(title);
+				}
 				poiDetailCommentsDto.setLanguage("");
 				poiDetailCommentsDtos.add(poiDetailCommentsDto);
 			}
