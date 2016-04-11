@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.base.Strings;
 import com.weego.main.dao.AreaDao;
 import com.weego.main.dao.AttractionDao;
 import com.weego.main.dao.PeopleDao;
@@ -22,15 +21,8 @@ import com.weego.main.dto.ParagraphDto;
 import com.weego.main.dto.PgcContentDto;
 import com.weego.main.dto.PgcImageDto;
 import com.weego.main.dto.PgcPoiDto;
-import com.weego.main.model.BasePOILabel;
-import com.weego.main.model.LatestAttractions;
 import com.weego.main.model.Peoples;
 import com.weego.main.model.PgcOriginal;
-import com.weego.main.model.PgcPoi;
-import com.weego.main.model.Pgcs;
-import com.weego.main.model.Restaurants;
-import com.weego.main.model.ShopTag;
-import com.weego.main.model.Shoppings;
 import com.weego.main.service.PgcService;
 import com.weego.main.util.HttpUtil;
 
@@ -45,7 +37,7 @@ public class PgcServiceImpl implements PgcService {
 	private String secondImageUrl = "http://weegotest.b0.upaiyun.com/restaurant/origin/";
 	private String thirdImageUrl = "http://weegotest.b0.upaiyun.com/shopping/origin/";
 	private String fourthImageUrl = "http://weegotest.b0.upaiyun.com/shoparea/origin/";
-	
+	private String authorHeadImageUrl = "http://weegotest.b0.upaiyun.com/brands/origin/";
 	
 	@Autowired
 	private PgcDao pgcDao;
@@ -210,7 +202,7 @@ public class PgcServiceImpl implements PgcService {
 		if(obj != null && obj.size() > 0) {
 			pgcOriginal.setAuthor((String) obj.get("author"));
 			pgcOriginal.setDesc((String) obj.get("desc"));
-			pgcOriginal.setImage((String) obj.get("image"));
+			pgcOriginal.setImage(authorHeadImageUrl + (String) obj.get("image"));
 			pgcOriginal.setSource((String) obj.get("source"));
 			pgcOriginal.setUrl((String) obj.get("url"));
 			
@@ -224,6 +216,8 @@ public class PgcServiceImpl implements PgcService {
 		 List<PgcContentDto> pgcPoiDtoList = new ArrayList<PgcContentDto>();
 		 if(obj != null && obj.size() > 0) {
 			 for(int i=0;i<obj.size();i++) {
+				 
+				 Map<String, Object> detail = (Map<String, Object>) obj.get(i).get("detail");
 				 PgcContentDto pgcContentDto = new PgcContentDto();
 				 
 				 PgcImageDto pgcImageDto = new PgcImageDto();
@@ -239,7 +233,6 @@ public class PgcServiceImpl implements PgcService {
 				 ParagraphDto paragraphDto = new ParagraphDto();
 				 paragraphDto.setDesc((String) obj.get(i).get("poi_desc"));
 				 paragraphDto.setTitle((String) obj.get(i).get("poi_image_desc"));
-				 System.out.println(paragraphDto.getTitle());
 				 pgcContentDto.setParagraph(paragraphDto);
 				 
 				 PgcPoiDto pgcPoiDto = new PgcPoiDto();
@@ -251,25 +244,110 @@ public class PgcServiceImpl implements PgcService {
 					 } else {
 						 pgcPoiDto.setImage(firstImageUrl + (String) obj.get(i).get("poi_image"));
 					 } 
+					 
+					 try {
+						 if(detail != null && detail.size() > 0) {
+							 if(detail.containsKey("subLabelNew")) {
+								 List<Map<String, Object>> tags = (List<Map<String, Object>> ) detail.get("subLabelNew");
+								 if(tags != null && tags.size() > 0) {
+									 if(tags.get(0).containsKey("label")) {
+										 pgcPoiDto.setTag((String) tags.get(0).get("label"));
+									 } else {
+										 pgcPoiDto.setTag("");
+									 }
+								 }
+							 }
+						 }else {
+							 pgcPoiDto.setTag("");
+						 }
+					} catch (Exception e) {
+						logger.info("标签值有误!");
+						pgcPoiDto.setTag("");
+						e.printStackTrace();
+					}
+					 
+					 
 				 }else if("1".equals(obj.get(i).get("type"))) {
 					 if((String) obj.get(i).get("poi_image") == null) {
 						 pgcPoiDto.setImage(null);
 					 } else {
 						 pgcPoiDto.setImage(secondImageUrl + (String) obj.get(i).get("poi_image"));
 					 } 
+					 
+					 try {
+						 if(detail != null && detail.size() > 0) {
+							 if(detail.containsKey("tags_zh")) {
+								 List<String> tags = (List<String>) obj.get(i).get("tags_zh");
+								 if(tags != null && tags.size() > 0) {
+									 pgcPoiDto.setTag((String) tags.get(0));
+								 }
+							 }
+						 }else {
+							 pgcPoiDto.setTag("");
+						 }
+						 
+					} catch (Exception e) {
+						logger.info("标签值有误!");
+						pgcPoiDto.setTag("");
+						e.printStackTrace();
+					}
+					 
 				 } else if("2".equals(obj.get(i).get("type"))) {
 					 if((String) obj.get(i).get("poi_image") == null) {
 						 pgcPoiDto.setImage(null);
 					 } else {
 						 pgcPoiDto.setImage(thirdImageUrl + (String) obj.get(i).get("poi_image"));
 					 } 
+					 
+					 try {
+						 if(detail != null && detail.size() > 0) {
+							 if(detail.containsKey("subLabelNew")) {
+								 List<Map<String, Object>> tags = (List<Map<String, Object>> ) obj.get(i).get("subLabelNew");
+								 if(tags != null && tags.size() > 0) {
+									 if(tags.get(0).containsKey("label")) {
+										 pgcPoiDto.setTag((String) tags.get(0).get("label"));
+									 } else {
+										 pgcPoiDto.setTag("");
+									 }
+								 } 
+							 }
+						 } else {
+								 pgcPoiDto.setTag("");
+							 }
+							 
+						} catch (Exception e) {
+							logger.info("标签值有误!");
+							pgcPoiDto.setTag("");
+							e.printStackTrace();
+						}
+					 
 				 } else if("3".equals(obj.get(i).get("type"))) {
 					 if((String) obj.get(i).get("poi_image") == null) {
 						 pgcPoiDto.setImage(null);
 					 } else {
-						 pgcPoiDto.setImage(fourthImageUrl + (String) obj.get(i).get("poi_image"));
+						 pgcPoiDto.setImage((fourthImageUrl + (String) obj.get(i).get("poi_image")).replace(" ", "%20"));
 					 } 
+					 
+					 try {
+						 if(detail != null && detail.size() > 0) {
+							 if(detail.containsKey("tags")) {
+								 List<String> tags = (List<String>) obj.get(i).get("tags");
+								 if(tags != null && tags.size() > 0) {
+									 pgcPoiDto.setTag((String) tags.get(0));
+								 }
+							 }
+						 }else {
+							 pgcPoiDto.setTag("");
+						 }
+						 
+					} catch (Exception e) {
+						logger.info("标签值有误!");
+						pgcPoiDto.setTag("");
+						e.printStackTrace();
+					}
 				 }
+				 
+				 
 				 pgcContentDto.setPoi(pgcPoiDto);
 				 pgcPoiDtoList.add(pgcContentDto);
 			 }
