@@ -51,7 +51,7 @@ header {
 		</c:when>
 		<c:otherwise>
 			<div class="from">
-				作者：<span id="author">${original.author}</span>,来源：<span id="from">${original.source}</span>
+				<span id="from">${original.source}</span>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -138,15 +138,20 @@ header {
 	<c:choose>
 		<c:when
 			test="${original.author =='' || original.author == null}">
-			<footer>
-				<div style="display: none" class="from"></div>
-			</footer>
+			<footer style="display: none"></footer>
 		</c:when>
 		<c:otherwise>
 			<footer>
-				<div class="from">
-					作者：<span id="author">${original.author}</span>,来源：<span id="from">${original.source}</span>
+				<h5>由weego重新排版  <a href="${original.url} ">阅读全文</a></h5>
+				<div class="logo">
+					<img src="${original.image }">
 				</div>
+				<div class="accounts">${original.author }</div>
+				<div class="accounts_breif">${original.desc} </div>
+
+				<!-- <div class="from">
+					作者：<span id="author">${original.author}</span>,来源：<span id="from">${original.source}</span>
+				</div> -->
 			</footer>
 		</c:otherwise>
 	</c:choose>
