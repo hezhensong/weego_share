@@ -324,3 +324,8 @@ html,body{width:100%; position:relative;}
 #last_tip{
 	border-bottom: none;
 }
+.download{
+	width: 100%;
+  	position: fixed;
+  	bottom: 0;
+}

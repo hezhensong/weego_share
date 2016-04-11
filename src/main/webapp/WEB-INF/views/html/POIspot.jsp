@@ -427,6 +427,7 @@ header {
 		</div>
 	</c:if>
 	</div>
+	<img class="download" src="../resource/img/poi/plan.png">
 </body>
 <script type="text/javascript" src="../js/POI.js"></script>
 

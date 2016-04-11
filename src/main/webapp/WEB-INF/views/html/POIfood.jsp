@@ -292,6 +292,7 @@ header {
 						<c:otherwise>
 							<div class="little">
 								<img class="little" src="../resource/img/poi/poi_facilities_2.png">
+
 								<div class="text wifi" id="little">需要预定</div>
 							</div>
 						</c:otherwise>
@@ -434,6 +435,7 @@ header {
 			</div>
 		</c:if>
 	</div>
+	<img class="download" src="../resource/img/poi/plan.png">
 </body>
 <script type="text/javascript" src="../js/POI.js"></script>
 </html>
