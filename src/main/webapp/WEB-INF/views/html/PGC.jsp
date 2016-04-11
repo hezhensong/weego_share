@@ -4,7 +4,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>PGC活动</title>
+<title>${title}</title>
 <link rel="stylesheet" type="text/css" href="../css/PGC.css">
 <script type="text/javascript" src="../resource/jquery-1.3.2.min.js"></script>
 <style type="text/css">

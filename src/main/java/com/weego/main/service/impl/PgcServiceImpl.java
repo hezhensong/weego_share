@@ -188,7 +188,7 @@ public class PgcServiceImpl implements PgcService {
 	private Peoples getPerson(Map<String, Object> obj) {
 		Peoples peoples = new Peoples();
 		if(obj != null && obj.size() > 0) {
-			peoples.setHeadImage((String) obj.get("head_image"));
+			peoples.setHeadImage(authorHeadImageUrl + (String) obj.get("head_image"));
 			peoples.setUsername((String) obj.get("username"));
 			peoples.setJobDesc((String) obj.get("job_desc"));
 		} else {
