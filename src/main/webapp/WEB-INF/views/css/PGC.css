@@ -65,9 +65,9 @@
 		width:100%;
 	}
 	.from{
-		margin: 6% 3%;
+		margin:40px 28px 60px 28px;
     	text-align: center;
-    	font: 30px HelveticaNeue-Light;
+    	font: 38px HelveticaNeue-Light;
 	}
 	.drb{
 		margin:36px 28px 40px 28px;
@@ -127,7 +127,7 @@
 		border-bottom: 1px solid #fff;
 		position: absolute;
 		top: 28%;
-		left: 20%;
+		left: 22%;
 	}
 	
 	.page .poi .center .line{
@@ -172,12 +172,16 @@
 		text-align: center;
 	}
 	footer h5 {
+	padding-bottom: 40px;
+	border-bottom: 1px solid rgba(138,138,138,0.4);
     margin: 5% 3%;
-    font-size: 30px;
+    font-size: 38px;
     opacity: 0.5
+    border-bottom
 	}
 
 	footer h5 a {
+		text-decoration: none;
 	    color: #ff4f4e;
 	}
 	footer .logo{
@@ -185,12 +189,12 @@
     	height: 100px;
 	}
 	footer .logo img{
-		border-radius: 50px;
+		border-radius: 50%;
 	    position: relative;
 	    margin: 0 auto;
-	    width: 100px;
-	    height: 100px;
-	    left: 425px;
+	    width: 150px;
+	    height: 150px;
+	    left: 410px;
 	}
 	footer .accounts {
 	    font-size: 36px;
@@ -200,7 +204,7 @@
 	footer .accounts_breif{
 	    margin:60px 3% 6% 3%;
 	    text-align: center;
-	    font-size: 30px;
-	    line-height: 60px;
+	    font-size: 38px;
+	    line-height: 65px;
 
 	}

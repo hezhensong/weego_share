@@ -144,9 +144,13 @@ header {
 		</c:when>
 		<c:otherwise>
 			<footer>
-				<div class="from">
-					作者：<span id="author">${original.author}</span>,来源：<span id="from">${original.source}</span>
+				<h5>由weego重新排版  <a href="">阅读全文</a></h5>
+				<div class="logo">
+					<img src="../resource/img/pgc/1.jpg">
 				</div>
+				<div class="accounts">weego公众账号</div>
+				<div class="accounts_breif">weego公众账号weego公众账号weego公众账号weego公众账号weego公众账号weego公众账号weego公众账号</div>
+
 			</footer>
 		</c:otherwise>
 	</c:choose>
