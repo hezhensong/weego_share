@@ -18,10 +18,10 @@
 </head>
 <body>
 	<!-- 可能会缺失，要判断 -->
-	<c:if test="${leadText!=null && leadText!=''}">
+	<c:if test="${image != null && image != ''}">
 		<div class="bg" style="background-image: url(${image});">
 			<img src="../resource/img/pgc/overlay.png">
-			<h1 class="bg_title">${leadText}</h1>
+			<h1 class="bg_title">${lead}</h1>
 		</div>
 	</c:if>
 	<!-- 循环 -->

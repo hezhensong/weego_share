@@ -3,14 +3,16 @@ package com.weego.main.controller;
 import com.weego.main.dto.NewsDto;
 import com.weego.main.dto.ResponseDto;
 import com.weego.main.service.NewsService;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @RestController
-@RequestMapping("/api/v2/news")
+@RequestMapping("/app")
 public class NewsController {
 
     private static Logger logger = LogManager.getLogger(NewsController.class);
@@ -36,5 +38,12 @@ public class NewsController {
         }
 
         return responseDto;
+    }
+    
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView getPgc(@RequestParam("newsId") String newsId) {
+
+        return newsService.getSpecificNews(newsId);
     }
 }

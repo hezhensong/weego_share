@@ -109,3 +109,17 @@ body {
 footer{
 	margin-bottom: 10%;
 }
+.down_link{
+    z-index: 200;
+    position: fixed;
+    width: 245px;
+    height: 83px;
+    bottom: 55px;
+    right: 70px;
+}
+.download{
+    width: 100%;
+      position: fixed;
+      bottom: 0;
+}
+

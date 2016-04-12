@@ -37,8 +37,6 @@ public class BasePOIServiceImpl implements BasePOIService {
 	private String SHOPPING_IMAGE_URL = "http://weegotest.b0.upaiyun.com/shopping/iosimgs/";
 	private String SHOPPING_BRAND_IMAGE_URL = "http://weegotest.b0.upaiyun.com/brands/iosimgs/";
 	
-	
-
 	private String AREA_REQUEST_URL = "http://123.56.65.17/api/v2/shopareas_poi/";
 	private String AREA_IMAGE_URL = "http://weegotest.b0.upaiyun.com/shoparea/iosimgs/";
 

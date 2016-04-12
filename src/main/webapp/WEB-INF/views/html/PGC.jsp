@@ -4,6 +4,11 @@
 
 <head>
 <meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+<meta name="apple-mobile-web-app-capable" content="yes"> -->
+
 <title>PGC活动</title>
 <link rel="stylesheet" type="text/css" href="../css/PGC.css">
 <script type="text/javascript" src="../resource/jquery-1.3.2.min.js"></script>
@@ -148,9 +153,13 @@ header {
 				</div>
 				<div class="accounts">${original.author }</div>
 				<div class="accounts_breif">${original.desc} </div>
+
 			</footer>
 		</c:otherwise>
 	</c:choose>
+	<div style="margin-bottom: 245px"></div>
+	<a href="https://itunes.apple.com/cn/app/weego-jian-dan-ni-de-lu-xing/id924423318?mt=8" class="down_link"></a>
+	<img class="download" src="../resource/img/poi/plan.png">
 </body>
 <script type="text/javascript" src="../js/PGC.js"></script>
 </html>

@@ -324,8 +324,16 @@ html,body{width:100%; position:relative;}
 #last_tip{
 	border-bottom: none;
 }
+.down_link{
+	z-index: 200;
+	position: fixed;
+	width: 245px;
+	height: 83px;
+	bottom: 55px;
+	right: 70px;
+}
 .download{
 	width: 100%;
-  	position: fixed;
-  	bottom: 0;
+	  position: fixed;
+	  bottom: 0;
 }
