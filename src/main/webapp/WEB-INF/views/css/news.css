@@ -40,17 +40,16 @@ body {
 	border-bottom: 1px solid rgba(138,138,138,0.4);
 }
 .page .title{
-	margin:40px 12px;
+	margin:40px 12px 40px 12px;
 	font-size: 45px;
 }
 .page .text{
 	margin:40px 12px;
 	font-size: 38px;
-	line-height: 60px;
+	line-height: 68px;
 }
 .page .resource{
-	
-	margin:40px 12px 60px 12px;
+	margin:40px 28px 60px 12px;
 }
 .page .resource .time{
 	opacity: 0.6;
@@ -70,13 +69,13 @@ body {
 	margin-right: 20px;
 }
 .page .resource .readmore .arrow{
-	margin-top: 4px;
+	margin-top: 6px;
 	float: right;
 	width:0; 
     height:0; 
-    border-top:17px solid transparent;
-    border-bottom: 17px solid transparent;
-    border-left: 17px solid #fff;
+    border-top:14px solid transparent;
+    border-bottom: 14px solid transparent;
+    border-left: 14px solid #fff;
 }
 .page .pic{
 	background-size: cover;

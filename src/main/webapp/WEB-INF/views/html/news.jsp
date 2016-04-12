@@ -9,7 +9,6 @@
 <style type="text/css">
 .bg {
 	position: relative;
-	background-image: url(${image});
 	background-size: cover;
 	height: 650px;
 	width: 100%;
@@ -20,7 +19,7 @@
 <body>
 	<!-- 可能会缺失，要判断 -->
 	<c:if test="${leadText!=null && leadText!=''}">
-		<div class="bg">
+		<div class="bg" style="background-image: url(${image});">
 			<img src="../resource/img/pgc/overlay.png">
 			<h1 class="bg_title">${leadText}</h1>
 		</div>
