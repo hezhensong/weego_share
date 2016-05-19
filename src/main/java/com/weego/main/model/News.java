@@ -19,6 +19,12 @@ public class News {
     @JsonProperty("image")
     private String image;
 
+    @JsonProperty("last_modify_time")
+    private String lastMdifyTime;
+
+    @JsonProperty("type")
+    private String type;
+
     @JsonProperty("news_content")
     private List<NewsContent> newsContentList;
 
@@ -53,6 +59,22 @@ public class News {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getLastMdifyTime() {
+        return lastMdifyTime;
+    }
+
+    public void setLastMdifyTime(String lastMdifyTime) {
+        this.lastMdifyTime = lastMdifyTime;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public List<NewsContent> getNewsContentList() {

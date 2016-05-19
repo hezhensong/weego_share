@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body {
+			background:#999;
+		}
+		.wrapper {
+			width:500px;
+			margin:0 auto;
+			padding:20px 20px 0 20px;
+			border-radius:5px;
+			box-shadow:3px 3px #999;
+			background:#fff;
+			/*text-align:center;*/
+		}
+		h3 {
+			text-align:center;
+		}
+		#ipt {
+			width:500px;
+			height:50px;
+			border:1px solid #333;
+			font-size:24px;
+		}
+		.bottom {
+			text-align:left;
+			background:#ccc;
+			padding:20px 10px;
+		}
+		#textUl li {
+			display:inline-block;
+		}
+		.checkbtn {
+			vertical-align: middle;
+		}
+		.deleteBtn {
+			display:none;
+			float:right;
+			font-size:20px;
+			background:#ccc;
+			border-radius:50%;
+			text-align:center;
+			width:20px;
+			height:20px;
+		}
+		#textUl {
+			padding-left:0;
+		}
+		#textUl p {
+			padding:10px 0;
+			border-radius:5px;
+		}
+		#textUl p:hover {
+			background:#eee;
+		}
+		#textUl p:hover .deleteBtn {
+			display:block;
+			cursor:pointer;
+		}
+		.btns {
+			width:100px;
+			height:100px;
+		}
+		.btns:active {
+			background:red;
+			
+		}
+	</style>
+</head>
+<body>
+	<button class = "btns">dianjidianjidianji</button>
+	<div class="wrapper">
+		<h3>todos</h3>
+		<input type="text" id = "ipt" placeholder = "what needs to be done">
+		<div id="textWapper">
+			<input type="checkbox"> Mark all as complete
+			<ul id = "textUl">
+
+			</ul>
+			<p class = "bottom"><span id = "list_count">0</span>items left <a href="">clear <span id = "clear_count">0</span> completed item</a></p>
+		</div>
+	</div>
+
+	<script>
+		var ipt = document.getElementById("ipt"),
+			textUl = document.getElementById("textUl")
+
+		ipt.addEventListener("keyup",function (e) {
+			var iptText = ipt.value;
+			if(iptText == ' ') {
+				return;
+			}
+			if(e.keyCode == 13) {
+				var nodeCont = document.createElement('p');
+				var node = document.createElement("li");
+				var nodebtn = document.createElement("input");
+				var deleteBtn = document.createElement("span");
+				deleteBtn.innerHTML = 'X';
+				deleteBtn.className = "deleteBtn";
+				nodebtn.setAttribute("type",'checkbox');
+				nodebtn.className = "checkbtn";
+				node.innerHTML = iptText;
+
+				nodeCont.appendChild(nodebtn);
+				nodeCont.appendChild(node);
+				nodeCont.appendChild(deleteBtn);
+
+				textUl.appendChild(nodeCont);
+
+				ipt.value = ' ';
+			}
+
+		},false);
+
+		textUl.addEventListener("click",function (e) {
+			// var e = e.sreElement || e.target;
+			// if(e.className = "deleteBtn") {
+			// 	console.log(1234);
+			// }
+			console.log(e);
+		})
+
+
+
+	</script>
+</body>
+</html>

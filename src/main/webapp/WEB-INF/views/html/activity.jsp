@@ -112,8 +112,9 @@
 
 	<footer></footer>
 	<div style="margin-bottom: 245px"></div>
-	<a href="https://itunes.apple.com/cn/app/weego-jian-dan-ni-de-lu-xing/id924423318?mt=8" class="down_link"></a>
+	<div class="down_link"></div>
 	<img class="download" src="../resource/img/poi/plan.png">
+	<img class="share"  src="../resource/img/poi/share.jpg">
 </body>
 <script type="text/javascript" src="../js/activity.js"></script>
 </html>

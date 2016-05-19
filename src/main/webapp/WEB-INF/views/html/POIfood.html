@@ -36,6 +36,16 @@ header {
 	width: 52px;
 	background-size: cover;
 }
+.share{
+	display: none;
+	top: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+.show{
+	display: block;
+}
 </style>
 </head>
 <body>
@@ -59,7 +69,7 @@ header {
 	</div>
 	<div class="tips">
 	<c:if test="${foreword != null && foreword != '' }">
-		<div class="h2">${foreword}</div>
+		<div class="h2">菲格雷斯排名第一的观光景点，让你脑洞大开的博物馆</div>
 		</c:if>
 			<c:if test="${tags !='' && tags != null}">
 				<div class="special">
@@ -86,7 +96,7 @@ header {
 					<img src="../resource/img/poi/introd.png">
 					<div class="h3">简介</div>
 				</div>
-				<p class="margin" id="breif_desc">${breif}</p>
+				<p class="margin" id="breif_desc">达利戏剧博物馆，是一座纪念西班牙画家萨尔瓦多·达利的博物馆，位于西班牙加泰罗尼亚的菲格雷斯，即达利的家乡。达利剧院博物馆是世界上最大的超现实主义绘画博物馆，由达利本人亲自设计，这栋19世纪的建筑最早为市政厅剧院，曾在西班牙内战时被摧毁。</p>
 			</div>
 		</c:otherwise>
 	</c:choose>
@@ -291,11 +301,9 @@ header {
 						</c:when>
 						<c:otherwise>
 							<div class="little">
-<<<<<<< HEAD
-								<img class="little" src="..resource/img/poi/poi_facilities_2.png">
-=======
+
 								<img class="little" src="../resource/img/poi/poi_facilities_2.png">
->>>>>>> 27e3a4090c7fc7a9e4edf151be587e5475b70e9b
+
 								<div class="text wifi" id="little">需要预定</div>
 							</div>
 						</c:otherwise>
@@ -438,6 +446,10 @@ header {
 			</div>
 		</c:if>
 	</div>
+	<div style="margin-bottom: 245px"></div>
+	<div class="down_link"></div>
+	<img class="download" src="../resource/img/poi/plan.png">
+	<img class="share"  src="../resource/img/poi/share.png">
 </body>
 <script type="text/javascript" src="../js/POI.js"></script>
 </html>
